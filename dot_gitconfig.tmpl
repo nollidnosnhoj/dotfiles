@@ -1,6 +1,6 @@
 [user]
-	name = Dillon Johnson
-	email = me@nollidnosnhoj.com
+	name = {{ .name | quote }}
+	email = {{ .email | quote }}
 	signingkey = ~/.ssh/id_ed25519.pub
 [gpg]
 	format = ssh

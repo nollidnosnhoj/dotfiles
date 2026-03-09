@@ -1,0 +1,5 @@
+{{- if ne .chezmoi.hostname "cachyos-x8664" }}
+.config/foot/
+.config/niri/
+.local/bin/web-search
+{{- end }}
