@@ -2,8 +2,9 @@
 .config/foot/
 .config/niri/
 .local/bin/web-search
-{{- else }}
-.config/ghostty/
 {{- end }}
 
-
+{{- if ne .chezmoi.os "darwin" }}
+.config/aerospace/
+.config/ghostty/
+{{- end }}
