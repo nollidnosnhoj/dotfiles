@@ -1,11 +1,11 @@
-﻿{{- if eq .chezmoi.osRelease.id "cachyos" }}
+﻿{{ if (and (eq .chezmoi.os "linux") (eq .chezmoi.osRelease.id "cachyos")) }}
 if test -f  /usr/share/cachyos-fish-config/cachyos-config.fish
     source  /usr/share/cachyos-fish-config/cachyos-config.fish
 end
-{{- end }}
+{{ end }}
 
-# These are things that are in the cachyos-config.fish that I want used in other non-cachyos machines
-{{- if ne .chezmoi.osRelease.id "cachyos" }}
+{{- /* These are things that are in the cachyos-config.fish that I want used in other non-cachyos machines */ -}}
+{{ if (or (ne .chezmoi.os "linux") (ne .chezmoi.osRelease.id "cachyos")) }}
 ## Environment setup
 # Apply .profile: use this to put fish compatible .profile stuff in
 if test -f ~/.fish_profile
@@ -89,8 +89,7 @@ alias vdir='vdir --color=auto'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
-
-{{- end }}
+{{ end }}
 
 function fish_greeting
     # show nothing
