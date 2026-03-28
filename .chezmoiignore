@@ -1,4 +1,4 @@
-{{- if ne .chezmoi.hostname "cachyos-x8664" }}
+{{- if ne .chezmoi.os "linux" }}
 .config/foot/
 .config/niri/
 .local/bin/web-search
