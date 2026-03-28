@@ -1,1 +1,5 @@
-fish_add_path $HOME/.dotnet/tools
+if test -d $HOME/.dotnet
+    if not contains -- $HOME/.dotnet/tools $PATH
+        set -p PATH $HOME/.dotnet/tools
+    end
+end

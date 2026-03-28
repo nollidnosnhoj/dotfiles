@@ -1,3 +1,7 @@
 set -x GOPATH $HOME/go
 
-fish_add_path $GOPATH/bin
+if test -d $GOPATH
+    if not contains -- $GOPATH/bin $PATH
+        set -p PATH $GOPATH/bin
+    end
+end

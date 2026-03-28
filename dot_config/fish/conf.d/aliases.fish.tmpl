@@ -1,0 +1,31 @@
+{{- /* These are things that are in the cachyos-config.fish that I want used in other non-cachyos machines */ -}}
+{{ if (or (ne .chezmoi.os "linux") (ne .chezmoi.osRelease.id "cachyos")) }}
+## Useful aliases
+# Replace ls with eza
+alias ls='eza -al --color=always --group-directories-first --icons' # preferred listing
+alias la='eza -a --color=always --group-directories-first --icons' # all files and dirs
+alias ll='eza -l --color=always --group-directories-first --icons' # long format
+alias lt='eza -aT --color=always --group-directories-first --icons' # tree listing
+alias l.="eza -a | grep -e '^\.'" # show only dotfiles
+
+# Common use
+alias tarnow='tar -acf '
+alias untar='tar -zxvf '
+alias wget='wget -c '
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
+alias ......='cd ../../../../..'
+alias dir='dir --color=auto'
+alias vdir='vdir --color=auto'
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+{{ end }}
+{{- if eq .chezmoi.os "darwin" }}
+alias update='brew update && brew upgrade'
+{{- end }}
+
+alias c 'clear'
+alias lzg 'lazygit'
