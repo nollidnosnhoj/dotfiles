@@ -3,7 +3,12 @@
 // You will have to remove "/-" and edit it before it takes effect.
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Outputs
 
-/- output "DP-1" {
-    mode "2560x1440@359.979" // Set resolution and refresh rate
-    scale 1 // No scaling (use 2 for HiDPI)
+output "eDP-1" {
+    mode "2560x1600@165.000"
+    scale 1.5
+}
+
+output "LG Electronics LG ULTRAGEAR 104NTRL5T534" {
+    mode "2560x1440@143.933"
+    scale 1
 }
