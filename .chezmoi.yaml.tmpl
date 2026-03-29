@@ -20,3 +20,40 @@ data:
     hosttype: {{ $hosttype | quote }}
     osid: {{ $osid | quote }}
     email: {{ $email | quote }}
+    packages:
+        pacman:
+        # desktop
+        - niri
+        - xwayland-satellite
+        - xdg-desktop-portal-gnome
+        - xdg-desktop-portal-gtk
+        - noctalia-shell
+        - nautilus
+        - foot
+        - ghostty
+        - zed
+        - vscodium
+        - cursor-bin
+        - adw-gtk-theme
+        - nwg-look
+        # fonts
+        - noto-fonts
+        - noto-fonts-cjk
+        - noto-fonts-emoji
+        - ttf-dejavu
+        - ttf-jetbrains-mono-nerd
+        # shell
+        - fish
+        - mise
+        - neovim-git
+        - yazi
+        - starship
+        - zellij
+        - fzf
+        - zoxide
+        - eza
+        - ripgrep
+        - opencode-bin
+        - fd
+        - lazygit
+        - wget

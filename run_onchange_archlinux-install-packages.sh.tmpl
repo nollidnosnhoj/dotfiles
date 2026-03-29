@@ -1,0 +1,4 @@
+{{ if eq .osid "linux-cachyos" -}}
+#!/bin/bash
+paru -S {{ .packages.pacman | join " " }}
+{{ end -}}
