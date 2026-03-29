@@ -1,4 +1,14 @@
 {{ if eq .osid "linux-cachyos" -}}
 #!/bin/bash
+
+if ! command -v paru >/dev/null 2>&1; then
+    sudo pacman -S --needed --noconfirm base-devel
+    git clone https://aur.archlinux.org/paru.git
+    pushd paru
+    makepkg -si
+    popd
+    rm -rf paru
+fi
+
 paru -S {{ .packages.pacman | join " " }}
 {{ end -}}
