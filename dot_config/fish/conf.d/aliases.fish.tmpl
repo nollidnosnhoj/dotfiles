@@ -1,5 +1,5 @@
 {{- /* These are things that are in the cachyos-config.fish that I want used in other non-cachyos machines */ -}}
-{{ if (or (ne .chezmoi.os "linux") (ne .chezmoi.osRelease.id "cachyos")) }}
+{{- if ne .osid "linux-cachyos" }}
 ## Useful aliases
 # Replace ls with eza
 alias ls='eza -al --color=always --group-directories-first --icons' # preferred listing
@@ -22,8 +22,8 @@ alias vdir='vdir --color=auto'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
-{{ end }}
-{{- if eq .chezmoi.os "darwin" }}
+{{- end }}
+{{- if eq .osid "linux-cachyos" }}
 alias update='brew update && brew upgrade'
 {{- end }}
 

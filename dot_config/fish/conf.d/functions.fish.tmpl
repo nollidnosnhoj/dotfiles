@@ -1,4 +1,4 @@
-{{ if (or (ne .chezmoi.os "linux") (ne .chezmoi.osRelease.id "cachyos")) }}
+{{- if ne .osid "linux-cachyos" }}
 ## Functions
 # Functions needed for !! and !$ https://github.com/oh-my-fish/plugin-bang-bang
 function __history_previous_command
@@ -50,4 +50,4 @@ function copy
         command cp $argv
     end
 end
-{{ end }}
+{{- end }}

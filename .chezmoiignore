@@ -1,13 +1,8 @@
 {{- if eq .chezmoi.os "linux" }}
 .config/aerospace/
-{{- if (.chezmoi.kernel.osrelease | lower | contains "microsoft") }}
-.config/foot/
-.config/niri/
-.local/bin/web-search
-.config/systemd
 {{- end }}
-{{- end }}
-{{- if eq .chezmoi.os "darwin" }}
+
+{{- if (or (eq .osid "darwin") (eq .hosttype "wsl") ) }}
 .config/foot/
 .config/niri/
 .local/bin/web-search

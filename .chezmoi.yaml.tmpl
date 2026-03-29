@@ -1,0 +1,22 @@
+{{- $choices := list "desktop" "laptop" "work" "wsl" -}}
+{{- $hosttype := promptChoiceOnce . "hosttype" "What type of host are you on" $choices -}}
+
+{{- $osid := .chezmoi.os -}}
+{{- if (and (eq .chezmoi.os "linux") (hasKey .chezmoi.osRelease "id")) -}}
+{{-     $osid = printf "%s-%s" .chezmoi.os .chezmoi.osRelease.id -}}
+{{- else if eq .chezmoi.os "darwin" -}}
+{{-     $osid = "darwin" -}}
+{{- end -}}
+
+{{- $email := "me@nollidnosnhoj.com" -}}
+{{- $name := "Dillon Johnson" -}}
+{{- if eq $hosttype "work" -}}
+{{-     $email = "rjohnson@gericall.nl" -}}
+{{-     $name = "Randall Dillon Johnson" -}}
+{{- end -}}
+
+data:
+    name: {{ $name | quote }}
+    hosttype: {{ $hosttype | quote }}
+    osid: {{ $osid | quote }}
+    email: {{ $email | quote }}
