@@ -10,5 +10,5 @@ if ! command -v paru >/dev/null 2>&1; then
     rm -rf paru
 fi
 
-paru -S {{ .packages.pacman | join " " }}
+paru -S --needed {{ .packages.pacman | join " " }}
 {{ end -}}
