@@ -1,8 +1,8 @@
-{{- if eq .chezmoi.os "linux" }}
+{{- if ne .osid "darwin" }}
 .config/aerospace/
 {{- end }}
 
-{{- if (or (eq .osid "darwin") (eq .hosttype "wsl") ) }}
+{{- if (or (eq .osid "darwin") (eq .wsl true) ) }}
 .config/foot/
 .config/niri/
 .local/bin/web-search
