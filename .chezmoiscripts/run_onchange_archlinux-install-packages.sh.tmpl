@@ -10,5 +10,9 @@ if ! command -v paru >/dev/null 2>&1; then
     rm -rf paru
 fi
 
-paru -S --needed {{ .packages.pacman | join " " }}
+paru -S --needed --noconfirm {{ .packages.arch.core | join " " }}
+
+{{      if not .headless }}
+paru -S --needed --noconfirm {{ .packages.arch.desktop | join " " }}
+{{      end }}
 {{ end -}}
