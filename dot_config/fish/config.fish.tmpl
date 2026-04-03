@@ -1,12 +1,4 @@
-﻿{{- if eq .osid "linux-cachyos" -}}
-if test -f /usr/share/cachyos-fish-config/cachyos-config.fish
-    source /usr/share/cachyos-fish-config/cachyos-config.fish
-end
-{{- end -}}
-
-{{- /* These are things that are in the cachyos-config.fish that I want used in other non-cachyos machines */ -}}
-{{- if ne .osid "linux-cachyos" }}
-# Apply .profile: use this to put fish compatible .profile stuff in
+﻿# Apply .profile: use this to put fish compatible .profile stuff in
 if test -f ~/.fish_profile
     source ~/.fish_profile
 end
@@ -17,7 +9,6 @@ if test -d ~/.local/bin
         set -p PATH ~/.local/bin
     end
 end
-{{- end }}
 
 function fish_greeting
     # show nothing
