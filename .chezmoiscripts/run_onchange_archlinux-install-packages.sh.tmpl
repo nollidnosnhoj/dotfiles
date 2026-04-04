@@ -12,7 +12,10 @@ fi
 
 paru -S --needed --noconfirm {{ .packages.arch.core | join " " }}
 
-{{      if not .headless }}
+{{ if not .headless -}}
 paru -S --needed --noconfirm {{ .packages.arch.desktop | join " " }}
-{{      end }}
+{{ end -}}
+{{ if .wsl -}}
+paru -S --needed --noconfirm {{ .packages.arch.wsl | join " " }}
+{{ end -}}
 {{ end -}}
