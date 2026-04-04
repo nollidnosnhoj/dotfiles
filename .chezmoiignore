@@ -1,10 +1,14 @@
-{{- if ne .osid "darwin" }}
+{{ if ne .osid "darwin" -}}
 .config/aerospace/
-{{- end }}
+{{ end -}}
 
-{{- if (or (eq .osid "darwin") (eq .wsl true) ) }}
+{{ if (or (eq .osid "darwin") (eq .wsl true) ) -}}
 .config/foot/
 .config/niri/
 .local/bin/web-search
 .config/systemd
-{{- end }}
+{{ end -}}
+
+{{ if not .wsl -}}
+.config/fish/conf.d/wsl-ssh-agent.fish
+{{ end -}}

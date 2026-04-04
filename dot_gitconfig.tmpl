@@ -1,7 +1,11 @@
 [user]
 	name = {{ .name | quote }}
 	email = {{ .email | quote }}
+{{- if not .wsl }}
 	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPkExA5Pq9X6f3jyBJuJBodFmrUc2aRIRw2KKgadS3x4
+{{- else }}
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIP2ieFj6mYYyynIan2yoldvMGmJbxiw7Od36eUsSbDP9 me@nollidnosnhoj.com
+{{- end }}
 [gpg]
 	format = ssh
 [commit]
