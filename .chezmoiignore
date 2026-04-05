@@ -12,3 +12,5 @@
 {{ if not .wsl -}}
 .config/fish/conf.d/wsl-ssh-agent.fish
 {{ end -}}
+
+README.md
