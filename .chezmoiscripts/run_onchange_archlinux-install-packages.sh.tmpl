@@ -2,7 +2,7 @@
 #!/bin/bash
 
 if ! command -v paru >/dev/null 2>&1; then
-    sudo pacman -S --needed --noconfirm base-devel
+    sudo pacman -S --needed base-devel
     git clone https://aur.archlinux.org/paru.git
     pushd paru
     makepkg -si
@@ -10,12 +10,12 @@ if ! command -v paru >/dev/null 2>&1; then
     rm -rf paru
 fi
 
-paru -S --needed --noconfirm {{ .packages.arch.core | join " " }}
+paru -S --needed  {{ .packages.arch.core | join " " }}
 
 {{ if not .headless -}}
-paru -S --needed --noconfirm {{ .packages.arch.desktop | join " " }}
+paru -S --needed  {{ .packages.arch.desktop | join " " }}
 {{ end -}}
 {{ if .wsl -}}
-paru -S --needed --noconfirm {{ .packages.arch.wsl | join " " }}
+paru -S --needed {{ .packages.arch.wsl | join " " }}
 {{ end -}}
 {{ end -}}
