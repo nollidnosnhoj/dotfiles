@@ -5,6 +5,7 @@
 {{ if (or (eq .osid "darwin") (eq .wsl true) ) -}}
 .config/foot/
 .config/niri/
+.config/noctalia/
 .local/bin/web-search
 .config/systemd
 {{ end -}}
