@@ -1,5 +1,6 @@
 {{ if ne .osid "darwin" -}}
 .config/aerospace/
+.config/ghostty/
 {{ end -}}
 
 {{ if (or (eq .osid "darwin") (eq .wsl true) ) -}}
@@ -7,7 +8,6 @@
 .config/niri/
 .config/noctalia/
 .local/bin/web-search
-.config/systemd
 {{ end -}}
 
 {{ if not .wsl -}}
