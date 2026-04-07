@@ -2,3 +2,8 @@
 bun = "latest"
 go = "latest"
 node = "latest"
+
+[settings]
+
+[settings.node]
+default_packages_file = "/home/kopa/.config/mise/default-npm-packages"
