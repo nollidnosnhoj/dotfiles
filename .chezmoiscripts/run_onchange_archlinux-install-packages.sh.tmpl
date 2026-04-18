@@ -12,23 +12,23 @@ if ! command -v paru >/dev/null 2>&1; then
 fi
 
 CORE_PACKAGES=(
-    fish
-    mise
-    usage
-    neovim-git
-    yazi
-    starship
-    zellij
-    fzf
-    zoxide
     eza
-    ripgrep
-    opencode-bin
     fd
+    fish
+    fzf
     lazygit
+    mise
+    neovim-git
+    openai-codex-bin
+    opencode-bin
+    ripgrep
+    starship
+    usage
     wget
     xdg-utils
-    openai-codex-bin
+    yazi
+    zellij
+    zoxide
 )
 
 echo "Installing core packages..."
@@ -36,25 +36,25 @@ paru -S --needed ${CORE_PACKAGES[@]}
 
 {{ if not .headless -}}
 DESKTOP_PACKAGES=(
+    adw-gtk-theme
+    cliphist
+    cursor-bin
+    evolution-data-server
+    foot
+    fuzzel
+    nautilus
     niri
-    xwayland-satellite
+    noctalia-shell
+    nwg-look
+    python3
+    t3code-bin
+    vscodium
+    wlsunset
     xdg-desktop-portal
     xdg-desktop-portal-gnome
     xdg-desktop-portal-gtk
-    noctalia-shell
-    cliphist
-    wlsunset
-    python3
-    evolution-data-server
-    nautilus
-    foot
+    xwayland-satellite
     zed
-    vscodium
-    cursor-bin
-    t3code-bin
-    fuzzel
-    adw-gtk-theme
-    nwg-look
 )
 
 FONT_PACKAGES=(
