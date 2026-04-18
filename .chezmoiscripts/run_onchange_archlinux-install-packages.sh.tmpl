@@ -2,6 +2,7 @@
 #!/bin/bash
 
 if ! command -v paru >/dev/null 2>&1; then
+    echo "paru not found, installing..."
     sudo pacman -S --needed base-devel
     git clone https://aur.archlinux.org/paru.git
     pushd paru
@@ -10,12 +11,72 @@ if ! command -v paru >/dev/null 2>&1; then
     rm -rf paru
 fi
 
-paru -S --needed  {{ .packages.arch.core | join " " }}
+CORE_PACKAGES=(
+    fish
+    mise
+    usage
+    neovim-git
+    yazi
+    starship
+    zellij
+    fzf
+    zoxide
+    eza
+    ripgrep
+    opencode-bin
+    fd
+    lazygit
+    wget
+    xdg-utils
+    openai-codex-bin
+)
+
+echo "Installing core packages..."
+paru -S --needed ${CORE_PACKAGES[@]}
 
 {{ if not .headless -}}
-paru -S --needed  {{ .packages.arch.desktop | join " " }}
+DESKTOP_PACKAGES=(
+    niri
+    xwayland-satellite
+    xdg-desktop-portal
+    xdg-desktop-portal-gnome
+    xdg-desktop-portal-gtk
+    noctalia-shell
+    cliphist
+    wlsunset
+    python3
+    evolution-data-server
+    nautilus
+    foot
+    zed
+    vscodium
+    cursor-bin
+    t3code-bin
+    fuzzel
+    adw-gtk-theme
+    nwg-look
+)
+
+FONT_PACKAGES=(
+    noto-fonts
+    noto-fonts-cjk
+    noto-fonts-emoji
+    ttf-dejavu
+    ttf-jetbrains-mono-nerd
+)
+
+echo "Installing desktop-related packages..."
+paru -S --needed ${DESKTOP_PACKAGES[@]}
+
+echo "Installing font packages..."
+paru -S --needed ${FONT_PACKAGES[@]}
 {{ end -}}
 {{ if .wsl -}}
-paru -S --needed {{ .packages.arch.wsl | join " " }}
+WSL_PACKAGES=(
+    wsl2-ssh-agent
+)
+
+echo "Installing WSL-related packages..."
+paru -S --needed ${WSL_PACKAGES[@]}
 {{ end -}}
 {{ end -}}
