@@ -1,0 +1,47 @@
+{{ if eq .osid "darwin" -}}
+#!/bin/bash
+
+BREW_CASKS=(
+    aerospace
+    bitwarden
+    dbeaver-community
+    font-comic-shanns-mono-nerd-font
+    font-hack-nerd-font
+    ghostty
+    gitkraken
+    headlamp
+    helium-browser
+    microsoft-teams
+    postman
+    raycast
+    visual-studio-code
+)
+
+brew install --cask ${BREW_CASKS[@]}
+
+BREW_FORMULAES=(
+    azure-cli
+    chezmoi
+    docker
+    docker-completion
+    eza
+    fish
+    fzf
+    gh
+    helm
+    jq
+    derailed/k9s
+    kubernetes-cli
+    kustomize
+    lazygit
+    mise
+    neovim
+    ripgrep
+    starship
+    tree-sitter
+    usage
+    zoxide
+)
+
+brew install ${BREW_FORMULAES[@]}
+{{ end -}}
