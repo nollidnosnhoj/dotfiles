@@ -8,6 +8,26 @@
 {{- else }}
 	signingkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIP2ieFj6mYYyynIan2yoldvMGmJbxiw7Od36eUsSbDP9 me@nollidnosnhoj.com"
 {{- end }}
+[advice]
+	addEmptyPathspec = false
+	pushNonFastForward = false
+	statusHints = false
+[branch]
+	sort = -committerdate
+[column]
+	ui = auto
+[core]
+	editor = nvim
+	whitespace = trailing-space,space-before-tab
+[diff]
+	algorithm = histogram
+	colorMoved = plain
+	renamelimit = 8192
+	renames = true
+[fetch]
+	all = true
+	fsckobjects = false
+	prune = true
 [gpg]
 	format = ssh
 [commit]
@@ -16,11 +36,28 @@
     defaultBranch = "main"
 [tag]
     gpgsign = true
-[credential "https://github.com"]
-	helper = 
-	helper = !/usr/bin/gh auth git-credential
-[credential "https://gist.github.com"]
-	helper = 
-	helper = !/usr/bin/gh auth git-credential
+[merge]
+	conflictStyle = zdiff3
+[pager]
+	branch = false
+	grep = false
 [pull]
 	rebase = true
+[push]
+	autoSetupRemote = true
+	default = current
+[rebase]
+	autoSquash = true
+	autoStash = true
+	updateRefs = true
+[receive]
+	fsckobjects = true
+[status]
+	submoduleSummary = true
+{{- $ghPath := lookPath "gh" }}
+{{- if $ghPath }}
+[credential "https://github.com"]
+	helper = !{{ $ghPath }} auth git-credential
+[credential "https://gist.github.com"]
+	helper = !{{ $ghPath }} auth git-credential
+{{- end }}
