@@ -37,7 +37,7 @@ accordion-padding = 30
 inner.horizontal = 10
 inner.vertical = 10
 outer.left = 10
-outer.bottom = 90
+outer.bottom = 10
 outer.top = 10
 outer.right = 10
 
@@ -175,9 +175,13 @@ alt-shift-k = ['join-with up', 'mode main']
 alt-shift-l = ['join-with right', 'mode main']
 
 [[on-window-detected]]
+if = { app-id = 'com.microsoft.edgemac' }
+run = 'move-node-to-workspace 1'
+
+[[on-window-detected]]
 if = { app-id = 'com.microsoft.teams2' }
 run = 'move-node-to-workspace 5'
 
 [[on-window-detected]]
-if = { app-id = 'com.apple.mail' }
-run = 'move-node-to-workspace 6'
+if.app-id="org.jkiss.dbeaver.core.product"
+run = 'layout floating'
