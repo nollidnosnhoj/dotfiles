@@ -2,11 +2,11 @@
 	name = {{ .name | quote }}
 	email = {{ .email | quote }}
 {{- if eq .osid "darwin" }}
-	signingkey = ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCr3lvJZ2OKFns5O2az0q1lfrJrZFLF33oHRquTQAQD8AcahfTPNtjjpuj4rKfx1SMAMslNilaY52qDDSZtbA1hnZR+WFVTY3D/hXf3UvwEChbNBmcrlsgwiLmpxuEcd3LJsqBeUSZ6iP1EyrNlUprsj31qkhqH7+awe5okX+yQv+Py2lIuWrqNyWPjU3QyUjwojLfhizxC1+dQGcLK9hy8k+1sFvmgCwW6sloY3OEyny/wl1AMLi70bUWEKBj4bEp0UqdsNG2i7g7b1DdUgPtnVSJ7V2UL+/timVzOqLZFsokUltBdj7s4WVpmIX9Dr7I2UXZj1zWIl8gsDV1zQ3oC0jwWL2IHficHrGk6ma+vUPKhRBY/XkSIIYg7Ys9VC3Pidoopch7qZqDmVS2APsA6DwSBiGYDjJv02mp02/BElWtsYHsrvnqVdw/KsvKvyhUaVO8w0Z55+oxpxqo9O8/rgqvCqKBH+ib28t+39AzPaJXnzh1Kn3PPV0OTHvbVq4c= rjohnson@Randalls-MacBook-Pro.local
+	signingkey = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCr3lvJZ2OKFns5O2az0q1lfrJrZFLF33oHRquTQAQD8AcahfTPNtjjpuj4rKfx1SMAMslNilaY52qDDSZtbA1hnZR+WFVTY3D/hXf3UvwEChbNBmcrlsgwiLmpxuEcd3LJsqBeUSZ6iP1EyrNlUprsj31qkhqH7+awe5okX+yQv+Py2lIuWrqNyWPjU3QyUjwojLfhizxC1+dQGcLK9hy8k+1sFvmgCwW6sloY3OEyny/wl1AMLi70bUWEKBj4bEp0UqdsNG2i7g7b1DdUgPtnVSJ7V2UL+/timVzOqLZFsokUltBdj7s4WVpmIX9Dr7I2UXZj1zWIl8gsDV1zQ3oC0jwWL2IHficHrGk6ma+vUPKhRBY/XkSIIYg7Ys9VC3Pidoopch7qZqDmVS2APsA6DwSBiGYDjJv02mp02/BElWtsYHsrvnqVdw/KsvKvyhUaVO8w0Z55+oxpxqo9O8/rgqvCqKBH+ib28t+39AzPaJXnzh1Kn3PPV0OTHvbVq4c= rjohnson@Randalls-MacBook-Pro.local"
 {{- else if not .wsl }}
-	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPkExA5Pq9X6f3jyBJuJBodFmrUc2aRIRw2KKgadS3x4
+	signingkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPkExA5Pq9X6f3jyBJuJBodFmrUc2aRIRw2KKgadS3x4"
 {{- else }}
-	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIP2ieFj6mYYyynIan2yoldvMGmJbxiw7Od36eUsSbDP9 me@nollidnosnhoj.com
+	signingkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIP2ieFj6mYYyynIan2yoldvMGmJbxiw7Od36eUsSbDP9 me@nollidnosnhoj.com"
 {{- end }}
 [gpg]
 	format = ssh
