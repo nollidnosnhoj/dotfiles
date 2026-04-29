@@ -1,16 +1,6 @@
 {{ if eq .osid "linux-arch" -}}
 #!/bin/bash
 
-if ! command -v paru >/dev/null 2>&1; then
-    echo "paru not found, installing..."
-    sudo pacman -S --needed base-devel
-    git clone https://aur.archlinux.org/paru.git
-    pushd paru
-    makepkg -si
-    popd
-    rm -rf paru
-fi
-
 CORE_PACKAGES=(
     btop
     eza
@@ -49,14 +39,21 @@ DESKTOP_PACKAGES=(
     evolution-data-server
     flatpak
     foot
+    fprintd
     fuzzel
+    mpv
     nautilus
     niri
     nwg-look
     python3
     t3code-bin
     vscodium
+    vulkan-icd-loader
+    lib32-vulkan-icd-loader
+    vulkan-radeon
+    lib32-vulkan-radeon
     wlsunset
+    xclip
     xdg-desktop-portal
     xdg-desktop-portal-gnome
     xdg-desktop-portal-gtk
