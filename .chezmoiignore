@@ -5,9 +5,8 @@
 
 {{ if (or (eq .osid "darwin") (eq .wsl true) ) -}}
 .config/foot/
-.config/kitty/
+.config/mpv/
 .config/niri/
-.local/bin/web-search
 {{ end -}}
 
 {{ if not .wsl -}}
