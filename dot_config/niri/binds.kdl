@@ -5,6 +5,7 @@ binds {
 
     // === Application Launchers ===
     Mod+Return hotkey-overlay-title="Open Terminal" { spawn "foot"; }
+    Mod+E hotkey-overlay-title="Open Files" { spawn "nautilus"; }
     Mod+Space hotkey-overlay-title="Application Launcher" {
         spawn "dms" "ipc" "call" "spotlight" "toggle";
     }
