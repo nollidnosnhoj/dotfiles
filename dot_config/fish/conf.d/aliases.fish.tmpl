@@ -24,10 +24,7 @@ alias egrep='egrep --color=auto'
 alias c 'clear'
 alias lzg 'lazygit'
 
-{{ if eq .osid "darwin" }}
-alias update='brew update && brew upgrade'
-{{ else if eq .osid "linux-arch" }}
-alias update='paru -Syu'
+{{ if eq .osid "linux-arch" }}
 alias cleanup='sudo pacman -Rns (pacman -Qtdq)'
 alias rip="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -200 | nl"
 {{ if not .headless }}
