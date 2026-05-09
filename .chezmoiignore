@@ -12,6 +12,7 @@
 {{ if eq .osid "linux-cachyos" -}}
 .config/fish/conf.d/functions.fish
 {{ else -}}
+.config/alacritty/
 .config/fish/conf.d/bitwarden-ssh.fish
 {{ end -}}
 
