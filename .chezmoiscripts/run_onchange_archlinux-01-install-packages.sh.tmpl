@@ -1,14 +1,13 @@
-{{ if eq .osid "linux-arch" -}}
+{{- $validOs := list "linux-arch" "linux-cachyos" -}}
+{{ if has .osid $validOs -}}
 #!/bin/bash
 
 CORE_PACKAGES=(
     btop
     eza
-    {{- if not .wsl }}
     docker
     docker-buildx
     docker-compose
-    {{- end }}
     fd
     fish
     fzf
@@ -31,13 +30,11 @@ CORE_PACKAGES=(
 echo "Installing core packages..."
 paru -S --needed ${CORE_PACKAGES[@]}
 
-{{ if not .headless -}}
-DESKTOP_PACKAGES=(
+{{ if eq .hosttype "laptop" -}}
+NIRI_PACKAGES=(
     adw-gtk-theme
     cliphist
-    cursor-bin
     evolution-data-server
-    flatpak
     foot
     fprintd
     fuzzel
@@ -46,8 +43,6 @@ DESKTOP_PACKAGES=(
     niri
     nwg-look
     python3
-    t3code-bin
-    vscodium
     vulkan-icd-loader
     lib32-vulkan-icd-loader
     vulkan-radeon
@@ -60,6 +55,14 @@ DESKTOP_PACKAGES=(
     xwayland-satellite
 )
 
+echo "Installing niri-related packages..."
+paru -S --needed ${NIRI_PACKAGES[@]}
+{{ end -}}
+
+GUI_PACKAGES=(
+    vscodium
+)
+
 FONT_PACKAGES=(
     otf-comicshanns-nerd
     noto-fonts
@@ -69,18 +72,9 @@ FONT_PACKAGES=(
     ttf-jetbrains-mono-nerd
 )
 
-echo "Installing desktop-related packages..."
-paru -S --needed ${DESKTOP_PACKAGES[@]}
+echo "Installing gui-related packages..."
+paru -S --needed ${GUI_PACKAGES[@]}
 
 echo "Installing font packages..."
 paru -S --needed ${FONT_PACKAGES[@]}
-{{ end -}}
-{{ if .wsl -}}
-WSL_PACKAGES=(
-    wsl2-ssh-agent
-)
-
-echo "Installing WSL-related packages..."
-paru -S --needed ${WSL_PACKAGES[@]}
-{{ end -}}
 {{ end -}}

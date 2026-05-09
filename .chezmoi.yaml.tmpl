@@ -1,38 +1,20 @@
+{{- $choices := list "desktop" "laptop" "work" -}}
+{{- $hosttype := promptChoiceOnce . "hosttype" "What type of host are you on" $choices -}}
 {{- $osid := .chezmoi.os -}}
 {{- $email := "me@nollidnosnhoj.com" -}}
 {{- $name := "Dillon Johnson" -}}
-{{- $work := false -}}
-{{- $wsl := false -}}
-{{- $headless := false -}}
 
 {{- if (and (eq .chezmoi.os "linux") (hasKey .chezmoi.osRelease "id")) -}}
 {{-     $osid = printf "%s-%s" .chezmoi.os .chezmoi.osRelease.id -}}
-{{- else if eq .chezmoi.os "darwin" -}}
-{{-     $osid = "darwin" -}}
-{{/* If it's a MacOS machine, then it's my work laptop */}}
-{{-     $work = true -}}
 {{- end -}}
 
-{{/* WSL is also headless */}}
-{{- if (and (eq .chezmoi.os "linux") (.chezmoi.kernel.osrelease | lower | contains "microsoft")) -}}
-{{-     $wsl = true -}}
-{{-     $headless = true -}}
-{{- end -}}
-
-{{- if $work -}}
+{{- if eq $hosttype "work" -}}
 {{-     $email = "rjohnson@gericall.nl" -}}
 {{-     $name = "Randall Dillon Johnson" -}}
-{{- end -}}
-
-{{- if not $headless -}}
-{{-     $headless = promptBoolOnce . "headless" "Does this machine have a keyboard and/or mouse?" -}}
 {{- end -}}
 
 data:
     name: {{ $name | quote }}
     osid: {{ $osid | quote }}
     email: {{ $email | quote }}
-    linux: {{ eq .chezmoi.os "linux" }}
-    work: {{ $work }}
-    wsl: {{ $wsl }}
-    headless: {{ $headless }}
+    hosttype: {{ $hosttype | quote }}

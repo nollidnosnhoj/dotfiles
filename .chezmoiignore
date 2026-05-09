@@ -3,14 +3,16 @@
 .config/ghostty/
 {{ end -}}
 
-{{ if (or (eq .osid "darwin") (eq .wsl true) ) -}}
+{{ if ne .hosttype "laptop" -}}
 .config/foot/
 .config/mpv/
 .config/niri/
 {{ end -}}
 
-{{ if not .wsl -}}
-.config/fish/conf.d/wsl-ssh-agent.fish
+{{ if eq .osid "linux-cachyos" -}}
+.config/fish/conf.d/functions.fish
+{{ else -}}
+.config/fish/conf.d/bitwarden-ssh.fish
 {{ end -}}
 
 README.md

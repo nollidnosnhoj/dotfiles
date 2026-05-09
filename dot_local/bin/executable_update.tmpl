@@ -1,18 +1,20 @@
 #!/usr/bin/env bash
+{{- $hasParu := lookPath "paru" -}}
+{{- $hasBrew := lookPath "brew" -}}
+{{- $hasMise := lookPath "mise" -}}
 
-{{ if eq .osid "darwin" }}
-  echo "Updating Homebrew packages..."
-  brew update
-  brew upgrade
-{{ else if eq .osid "linux-arch" }}
-  echo "Updating Arch Linux packages..."
-  paru -Syu --needed --noconfirm
-{{ else }}
-  echo "Unsupported OS: {{ .osid }}"
-  exit 1
+{{ if $hasBrew }}
+echo "Updating Homebrew packages..."
+brew update
+brew upgrade
 {{ end }}
-
+{{ if $hasParu }}
+echo "Updating Arch Linux packages..."
+paru -Syu --needed --noconfirm
+{{ end }}
+{{ if $hasMise }}
 echo "Updating mise tools..."
 if command -v mise &> /dev/null; then
   mise upgrade
 fi
+{{ end }}

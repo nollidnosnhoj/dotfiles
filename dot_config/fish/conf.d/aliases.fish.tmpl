@@ -1,3 +1,4 @@
+{{ if ne .osid "linux-cachyos" -}}
 ## Useful aliases
 # Replace ls with eza
 alias ls='eza -al --color=always --group-directories-first --icons' # preferred listing
@@ -20,14 +21,8 @@ alias vdir='vdir --color=auto'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
+{{ end -}}
 
 alias c 'clear'
 alias lzg 'lazygit'
-
-{{ if eq .osid "linux-arch" }}
-alias cleanup='sudo pacman -Rns (pacman -Qtdq)'
-alias rip="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -200 | nl"
-{{ if not .headless }}
 alias code="codium"
-{{ end }}
-{{ end }}
