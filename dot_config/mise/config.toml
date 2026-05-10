@@ -1,10 +1,7 @@
 [tools]
 bun = "latest"
 go = "latest"
+"go:golang.org/x/tools/gopls" = "latest"
 node = "latest"
+"npm:@earendil-works/pi-coding-agent" = "latest"
 zig = "latest"
-
-[settings]
-
-[settings.node]
-default_packages_file = "/home/kopa/.config/mise/default-npm-packages"
