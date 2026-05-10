@@ -1,3 +1,7 @@
+spawn-at-startup "dms" "run"
+spawn-at-startup "/usr/lib/polkit-kde-authentication-agent-1"
+spawn-at-startup "bash" "-c" "wl-paste --watch cliphist store &"
+
 // This config is in the KDL format: https://kdl.dev
 // "/-" comments out the following node.
 // Check the wiki for a full description of the configuration:
@@ -83,6 +87,19 @@ input {
 // Find more information on the wiki:
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Outputs
 // Remember to uncomment the node by removing "/-"!
+{{ if eq .hosttype "desktop" }}
+output "DP-1" {
+    mode "2560x1440@164.958"
+    position x=0 y=0
+    variable-refresh-rate
+    focus-at-startup
+}
+output "DP-3" {
+    mode "1920x1080@143.981"
+    position x=2560 y=200
+    variable-refresh-rate
+}
+{{ end }}
 /-output "eDP-2" {
     mode "2560x1600@239.998993"
     position x=2560 y=0
@@ -92,6 +109,7 @@ input {
 // Find more information on the wiki:
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Layout
 layout {
+    gaps 5
     // Set gaps around windows in logical pixels.
     background-color "transparent"
     // When to center a column when changing focus, options are:
@@ -160,6 +178,10 @@ overview {
 // This line starts waybar, a commonly used bar for Wayland compositors.
 environment {
   XDG_CURRENT_DESKTOP "niri"
+  QT_QPA_PLATFORM "wayland"
+  ELECTRON_OZONE_PLATFORM_HINT "auto"
+  QT_QPA_PLATFORMTHEME "gtk3"
+  QT_QPA_PLATFORMTHEME_QT6 "gtk3"
 }
 hotkey-overlay {
     skip-at-startup
@@ -245,7 +267,15 @@ window-rule {
     draw-border-with-background false
 }
 window-rule {
-    match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+    match is-active=false
+    opacity 0.9
+}
+window-rule {
+    geometry-corner-radius 12
+    clip-to-geometry true
+}
+window-rule {
+    match app-id=r#"zen-browser$"# title="^Picture-in-Picture$"
     match app-id="zoom"
     open-floating true
 }

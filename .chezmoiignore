@@ -3,11 +3,11 @@
 .config/ghostty/
 {{ end -}}
 
-{{ if ne .hosttype "laptop" -}}
+{{ if not .niri }}
 .config/foot/
 .config/mpv/
 .config/niri/
-{{ end -}}
+{{ end }}
 
 {{ if eq .osid "linux-cachyos" -}}
 .config/fish/conf.d/functions.fish

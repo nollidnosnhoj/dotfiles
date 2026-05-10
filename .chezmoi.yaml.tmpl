@@ -3,6 +3,7 @@
 {{- $osid := .chezmoi.os -}}
 {{- $email := "me@nollidnosnhoj.com" -}}
 {{- $name := "Dillon Johnson" -}}
+{{- $niri := false -}}
 
 {{- if (and (eq .chezmoi.os "linux") (hasKey .chezmoi.osRelease "id")) -}}
 {{-     $osid = printf "%s-%s" .chezmoi.os .chezmoi.osRelease.id -}}
@@ -13,8 +14,13 @@
 {{-     $name = "Randall Dillon Johnson" -}}
 {{- end -}}
 
+{{- if eq .chezmoi.os "linux" -}}
+{{-     $niri = promptBool "Install niri/dms shell?" -}}
+{{- end -}}
+
 data:
     name: {{ $name | quote }}
     osid: {{ $osid | quote }}
     email: {{ $email | quote }}
     hosttype: {{ $hosttype | quote }}
+    niri: {{ $niri }}
