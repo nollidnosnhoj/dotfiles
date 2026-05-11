@@ -3,10 +3,8 @@
 	email = {{ .email | quote }}
 {{- if eq .hosttype "work" }}
 	signingkey = "~/.ssh/id_rsa.pub"
-{{- else if eq .hosttype "desktop" }}
-	signingkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPkExA5Pq9X6f3jyBJuJBodFmrUc2aRIRw2KKgadS3x4"
 {{- else }}
-	signingkey = "~/.ssh/id_ed25519.pub"
+	signingkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPkExA5Pq9X6f3jyBJuJBodFmrUc2aRIRw2KKgadS3x4"
 {{- end }}
 [advice]
 	addEmptyPathspec = false
