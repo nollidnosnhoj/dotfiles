@@ -2,6 +2,9 @@
 {{ if has .osid $validOs -}}
 #!/bin/bash
 
+echo "Updating Arch repositories"
+sudo pacman -Syu
+
 CORE_PACKAGES=(
     btop
     eza

@@ -10,11 +10,11 @@ brew upgrade
 {{ end }}
 {{ if $hasParu }}
 echo "Updating Arch Linux packages..."
-paru -Syu --needed --noconfirm
+sudo pacman -Syu
+echo "Update AUR packages"
+paru -Sua
 {{ end }}
 {{ if $hasMise }}
 echo "Updating mise tools..."
-if command -v mise &> /dev/null; then
-  mise upgrade
-fi
+mise upgrade
 {{ end }}
