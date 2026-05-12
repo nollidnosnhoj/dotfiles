@@ -16,6 +16,11 @@
 	ui = auto
 [core]
 	editor = nvim
+	{{- if lookPath "less" }}
+	pager = less
+	{{- else }}
+	pager = cat
+	{{- end }}
 	whitespace = trailing-space,space-before-tab
 [diff]
 	algorithm = histogram
