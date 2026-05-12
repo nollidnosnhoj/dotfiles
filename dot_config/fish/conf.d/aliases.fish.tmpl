@@ -25,4 +25,7 @@ alias egrep='egrep --color=auto'
 
 alias c 'clear'
 alias lzg 'lazygit'
+{{- $codium := lookPath "codium" }}
+{{ if $codium -}}
 alias code="codium"
+{{ end -}}
