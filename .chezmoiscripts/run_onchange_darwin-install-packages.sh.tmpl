@@ -1,6 +1,12 @@
 {{ if eq .hosttype "work" -}}
 #!/bin/bash
 
+BREW_TAPS=(
+    FelixKratz/formulae
+)
+
+brew tap ${BREW_TAPS[@]}
+
 BREW_CASKS=(
     aerospace
     bitwarden
@@ -13,7 +19,7 @@ BREW_CASKS=(
     helium-browser
     microsoft-teams
     postman
-    raycast
+    # raycast # using raycast beta version
     visual-studio-code
 )
 
@@ -36,6 +42,7 @@ BREW_FORMULAES=(
     mise
     neovim
     ripgrep
+    sketchybar
     starship
     tree-sitter
     usage
