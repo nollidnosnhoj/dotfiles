@@ -1,9 +1,14 @@
 [tools]
 bun = "latest"
 deno = "latest"
+dotnet = "latest"
+"dotnet:dotnet-ef" = "latest"
 go = "latest"
 "go:golang.org/x/tools/gopls" = "latest"
 node = "latest"
 "npm:@earendil-works/pi-coding-agent" = "latest"
 pnpm = "latest"
 zig = "latest"
+
+[settings]
+experimental = true
