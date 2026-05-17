@@ -4,7 +4,7 @@
 {{- if eq .hosttype "work" }}
 	signingkey = "~/.ssh/id_rsa.pub"
 {{- else }}
-	signingkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPkExA5Pq9X6f3jyBJuJBodFmrUc2aRIRw2KKgadS3x4"
+	signingkey = "~/.ssh/id_ed25519.pub"
 {{- end }}
 [advice]
 	addEmptyPathspec = false
