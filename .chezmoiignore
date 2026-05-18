@@ -1,6 +1,5 @@
 {{ $bitwardenPath := lookPath "bitwarden" -}}
 {{ if ne .osid "darwin" -}}
-.Brewfile
 .config/aerospace/
 .config/ghostty/
 {{ end -}}
@@ -20,3 +19,4 @@
 {{ end -}}
 
 README.md
+.config/sketchybar

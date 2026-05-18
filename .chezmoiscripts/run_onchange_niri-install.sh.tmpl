@@ -1,6 +1,8 @@
 {{ if .niri -}}
 #!/bin/bash
 
+set -euo pipefail
+
 NIRI_PACKAGES=(
     adw-gtk-theme
     cliphist

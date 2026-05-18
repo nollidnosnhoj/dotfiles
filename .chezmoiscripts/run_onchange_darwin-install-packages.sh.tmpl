@@ -2,5 +2,44 @@
 #!/bin/bash
 set -euo pipefail
 
-brew bundle --file="$HOME/.Brewfile"
+FORMULAE=(
+  azure-cli
+  chezmoi
+  docker
+  docker-completion
+  eza
+  fish
+  fzf
+  gh
+  helm
+  jq
+  kubernetes-cli
+  kustomize
+  lazygit
+  mise
+  neovim
+  ripgrep
+  starship
+  tree-sitter
+  usage
+  zoxide
+)
+
+CASKS=(
+  aerospace
+  bitwarden
+  dbeaver-community
+  font-comic-shanns-mono-nerd-font
+  font-hack-nerd-font
+  ghostty
+  gitkraken
+  headlamp
+  helium-browser
+  microsoft-teams
+  postman
+  visual-studio-code
+)
+
+brew install "${FORMULAE[@]}"
+brew install --cask "${CASKS[@]}"
 {{ end -}}

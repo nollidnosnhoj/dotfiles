@@ -1,8 +1,10 @@
 [tools]
 bun = "latest"
 deno = "latest"
+{{ if ne .osid "darwin" -}}
 dotnet = "latest"
 "dotnet:dotnet-ef" = "latest"
+{{ end -}}
 go = "latest"
 "go:golang.org/x/tools/gopls" = "latest"
 node = "latest"

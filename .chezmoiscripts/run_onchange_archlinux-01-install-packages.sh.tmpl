@@ -1,6 +1,7 @@
 {{- $validOs := list "linux-arch" "linux-cachyos" -}}
 {{ if has .osid $validOs -}}
 #!/bin/bash
+set -euo pipefail
 
 echo "Updating Arch repositories"
 sudo pacman -Syu
