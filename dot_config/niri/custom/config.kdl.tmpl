@@ -32,22 +32,9 @@ input {
     warp-mouse-to-focus
     focus-follows-mouse max-scroll-amount="10%"
 }
-{{ if eq .hosttype "desktop" }}
-output "DP-1" {
-    mode "2560x1440@164.958"
-    position x=0 y=0
-    variable-refresh-rate
-    focus-at-startup
-}
-output "DP-3" {
-    mode "1920x1080@143.981"
-    position x=2560 y=200
-    variable-refresh-rate
-}
-{{ end }}
-{{ if eq .hosttype "laptop" }}
-output "DP-2" {
-    mode "2560x1440@164.958"
+
+output "Samsung Electric Company LC49G95T H4ZT404758" {
+    mode "5120x1440@119.999"
     position x=0 y=0
     variable-refresh-rate
     focus-at-startup
@@ -57,10 +44,9 @@ output "eDP-1" {
     position x=0 y=0
     variable-refresh-rate
 }
-{{ end }}
 
 layout {
-    gaps 5
+    gaps 10
     background-color "transparent"
     center-focused-column "never"
     preset-column-widths {
@@ -70,13 +56,6 @@ layout {
     }
     preset-window-heights { }
     default-column-width { proportion 0.5; }
-    border {
-        off
-        width 4
-        active-color   "#707070"      // Neutral gray
-        inactive-color "#d0d0d0"      // Light gray
-        urgent-color   "#cc4444"      // Softer red
-    }
     shadow {
         softness 30
         spread 5
@@ -206,6 +185,10 @@ window-rule {
     match app-id=r#"com.danklinux.dms$"#
     open-floating true
 }
+window-rule {
+    match app-id=r#"jetbrains-rider$"#
+    open-focused true
+}
 debug {
     honor-xdg-activation-with-invalid-serial
 }
@@ -222,12 +205,3 @@ recent-windows {
 
 // custom configuration
 include "binds.kdl"
-
-// Include dms files
-include "dms/binds.kdl"
-include "dms/colors.kdl"
-include "dms/layout.kdl"
-include "dms/alttab.kdl"
-include "dms/outputs.kdl"
-include "dms/cursor.kdl"
-include "dms/windowrules.kdl"
