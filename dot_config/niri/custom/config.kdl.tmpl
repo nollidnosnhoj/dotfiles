@@ -1,4 +1,4 @@
-spawn-at-startup "dms" "run"
+spawn-at-startup "noctalia"
 spawn-at-startup "bash" "-c" "wl-paste --watch cliphist store &"
 
 config-notification {
@@ -73,8 +73,8 @@ layout {
     }
 }
 layer-rule {
-    match namespace="^quickshell$"
-    place-within-backdrop true
+  match namespace="^noctalia-backdrop"
+  place-within-backdrop true
 }
 overview {
     workspace-shadow {
@@ -176,8 +176,11 @@ window-rule {
     opacity 0.9
 }
 window-rule {
-    geometry-corner-radius 12
-    clip-to-geometry true
+  // Rounded corners for a modern look.
+  geometry-corner-radius 20
+
+  // Clips window contents to the rounded corner boundaries.
+  clip-to-geometry true
 }
 window-rule {
     match app-id="zen$" title="^Picture-in-Picture$"
@@ -186,11 +189,12 @@ window-rule {
     match app-id="zoom"
     open-floating true
 }
-// Open dms windows as floating by default
+// Floating Noctalia settings window.
 window-rule {
-    match app-id=r#"org.quickshell$"#
-    match app-id=r#"com.danklinux.dms$"#
-    open-floating true
+  match app-id="dev.noctalia.Noctalia.Settings"
+  open-floating true
+  default-column-width { fixed 1080; }
+  default-window-height { fixed 920; }
 }
 window-rule {
     match app-id=r#"jetbrains-rider$"#

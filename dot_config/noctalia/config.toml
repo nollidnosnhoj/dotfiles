@@ -1,0 +1,53 @@
+[theme]
+mode = "dark"
+builtin = "Tokyo-Night"
+source = "builtin"
+
+[theme.templates]
+builtin_ids = [ "foot", "gtk3", "gtk4", "niri", "qt", "starship" ]
+community_ids = [ "pi-agent", "zen-browser", "vscode", "zed", "discord", "yazi" ]
+
+[shell]
+launch_apps_as_systemd_services = true
+polkit_agent = true
+telemetry_enabled = true
+
+[bar.main]
+position = "top"
+center = [ "clock", "active_window" ]
+end = [ "tray", "media", "clipboard", "network", "bluetooth", "volume", "brightness", "battery", "notifications" ]
+start = [ "session", "workspaces" ]
+widget_spacing = 10
+
+[wallpaper]
+per_monitor_directories = true
+
+[wallpaper.automation]
+enabled = true
+interval_minutes = 30
+
+[wallpaper.DP-2]
+enabled = true
+directory = "/home/kopa/Pictures/Wallpapers/Ultrawide"
+
+[wallpaper.eDP-1]
+enabled = true
+directory = "/home/kopa/Pictures/Wallpapers"
+
+[backdrop]
+enabled        = false
+blur_intensity = 0.5    # 0.0 = no blur, 1.0 = maximum blur
+tint_intensity = 0.3    # 0.0 = no tint, 1.0 = fully opaque tint
+
+[weather]
+auto_locate = true
+unit = "imperial"
+
+[widget.battery]
+hide_when_plugged = true
+
+[widget.media]
+hide_when_no_media = true
+
+[widget.network]
+show_label = false
