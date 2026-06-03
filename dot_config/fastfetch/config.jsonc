@@ -6,6 +6,8 @@
     "source": "~/.config/fastfetch/moon.png",
     "width": 30,
     "padding": {
+      "top": 1,
+      "left": 2,
       "right": 4,
     },
   },
@@ -13,9 +15,12 @@
     "separator": "",
     "key": {
       "width": 15,
+      "paddingLeft": 2,
     },
   },
   "modules": [
+    "break",
+    "break",
     {
       // draw borders first to make colors of left and right border consistant
       "key": " user",
@@ -88,5 +93,6 @@
       "symbol": "circle",
       "keyColor": "39",
     },
+    "break",
   ],
 }
