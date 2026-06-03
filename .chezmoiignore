@@ -1,23 +1,13 @@
 {{ $bitwardenPath := lookPath "bitwarden" -}}
 {{ if ne .osid "darwin" -}}
 .config/aerospace/
-.config/ghostty/
 {{ end -}}
 
 {{ if not .niri }}
 .config/foot/
-.config/kitty/
 .config/mpv/
 .config/niri/
 {{ end }}
-
-{{ if eq .osid "linux-cachyos" -}}
-.config/fish/conf.d/functions.fish
-{{ end -}}
-
-{{ if or (eq $bitwardenPath "") (eq .osid "darwin") -}}
-.config/fish/conf.d/bitwarden-ssh.fish
-{{ end -}}
 
 README.md
 .config/sketchybar

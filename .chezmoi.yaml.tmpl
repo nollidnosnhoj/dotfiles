@@ -1,12 +1,17 @@
-{{- $choices := list "desktop" "laptop" "work" -}}
+{{- $choices := list "laptop" "work" -}}
 {{- $hosttype := promptChoiceOnce . "hosttype" "What type of host are you on" $choices -}}
 {{- $osid := .chezmoi.os -}}
 {{- $email := "me@nollidnosnhoj.com" -}}
 {{- $name := "Dillon Johnson" -}}
 {{- $niri := false -}}
+{{- $wsl := false -}}
 
 {{- if (and (eq .chezmoi.os "linux") (hasKey .chezmoi.osRelease "id")) -}}
 {{-     $osid = printf "%s-%s" .chezmoi.os .chezmoi.osRelease.id -}}
+{{- end -}}
+
+{{- if eq .chezmoi.os "linux" -}}
+{{-     $wsl = (.chezmoi.kernel.osrelease | lower | contains "microsoft") -}}
 {{- end -}}
 
 {{- if eq $hosttype "work" -}}
@@ -14,8 +19,8 @@
 {{-     $name = "Randall Dillon Johnson" -}}
 {{- end -}}
 
-{{- if eq .chezmoi.os "linux" -}}
-{{-     $niri = promptBool "Install niri/dms shell?" -}}
+{{- if (and (eq .chezmoi.os "linux") (not $wsl)) -}}
+{{-     $niri = promptBool "Install niri?" -}}
 {{- end -}}
 
 data:
@@ -24,3 +29,4 @@ data:
     email: {{ $email | quote }}
     hosttype: {{ $hosttype | quote }}
     niri: {{ $niri }}
+    wsl: {{ $wsl }}
