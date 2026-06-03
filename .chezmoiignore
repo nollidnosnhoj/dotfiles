@@ -6,6 +6,7 @@
 
 {{ if not .niri }}
 .config/foot/
+.config/kitty/
 .config/mpv/
 .config/niri/
 {{ end }}
