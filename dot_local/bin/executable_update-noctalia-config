@@ -1,0 +1,13 @@
+#!/bin/bash
+
+if ! command -v chezmoi &> /dev/null; then
+    echo "chezmoi not found"
+    exit 1
+fi
+
+chezmoi add ~/.config/btop/
+chezmoi add ~/.config/foot/
+chezmoi add ~/.config/kitty/
+chezmoi add ~/.config/niri/
+chezmoi add ~/.config/yazi/
+chezmoi add ~/.config/starship.toml
