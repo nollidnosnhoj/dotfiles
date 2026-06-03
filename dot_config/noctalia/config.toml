@@ -4,8 +4,11 @@ builtin = "Tokyo-Night"
 source = "builtin"
 
 [theme.templates]
-builtin_ids = [ "foot", "gtk3", "gtk4", "niri", "qt", "starship" ]
+builtin_ids = [ "btop", "foot", "gtk3", "gtk4", "kitty", "niri", "qt", "starship" ]
 community_ids = [ "pi-agent", "zen-browser", "vscode", "zed", "discord", "yazi" ]
+
+[hooks]
+colors_changed = "update-noctalia-config"
 
 [shell]
 launch_apps_as_systemd_services = true
@@ -18,6 +21,9 @@ center = [ "clock", "active_window" ]
 end = [ "tray", "media", "clipboard", "network", "bluetooth", "volume", "brightness", "battery", "notifications" ]
 start = [ "session", "workspaces" ]
 widget_spacing = 10
+
+[lockscreen]
+blurred_desktop = true
 
 [wallpaper]
 per_monitor_directories = true
