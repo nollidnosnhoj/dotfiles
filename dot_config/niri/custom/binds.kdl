@@ -5,15 +5,15 @@ binds {
 
     // === Application Launchers ===
     Mod+Return hotkey-overlay-title="Open Terminal" { spawn "kitty"; }
-    Mod+E hotkey-overlay-title="Open Files" { spawn "nautilus"; }
+    Mod+N hotkey-overlay-title="Open Files" { spawn "nautilus"; }
     Mod+Space hotkey-overlay-title="Application Launcher" {
         spawn-sh "noctalia msg panel-toggle launcher";
     }
 
-    Mod+S hotkey-overlay-title="Open Control-Center" {
+    Mod+E hotkey-overlay-title="Open Control Center" {
         spawn-sh "noctalia msg panel-toggle control-center";
     }
-    Mod+Comma hotkey-overlay-title="Settings" {
+    Mod+Shift+E hotkey-overlay-title="Open Settings" {
         spawn-sh "noctalia msg settings-toggle";
     }
     Mod+X hotkey-overlay-title="Open Session Menu" {
@@ -28,7 +28,6 @@ binds {
     }
 
     // === Security ===
-    Mod+Shift+E { quit; }
     Mod+Alt+L hotkey-overlay-title="Lock Screen" {
         spawn-sh "noctalia msg session lock";
     }
@@ -75,9 +74,8 @@ binds {
 
     // === Window Management ===
     Mod+Q repeat=false { close-window; }
-    Mod+F { maximize-column; }
-    Mod+Shift+F { fullscreen-window; }
-    Mod+Shift+T { toggle-window-floating; }
+    Mod+Backspace repeat=false { close-window; }
+    Mod+V { toggle-window-floating; }
     Mod+Shift+V { switch-focus-between-floating-and-tiling; }
     Mod+W { toggle-column-tabbed-display; }
 
@@ -109,8 +107,6 @@ binds {
 
     // === Monitor Navigation ===
     Mod+Ctrl+Left  { focus-monitor-left; }
-    //Mod+Ctrl+Down  { focus-monitor-down; }
-    //Mod+Ctrl+Up    { focus-monitor-up; }
     Mod+Ctrl+Right { focus-monitor-right; }
     Mod+Ctrl+H     { focus-monitor-left; }
     Mod+Ctrl+J     { focus-monitor-down; }
@@ -185,30 +181,40 @@ binds {
     // === Column Management ===
     Mod+BracketLeft  { consume-or-expel-window-left; }
     Mod+BracketRight { consume-or-expel-window-right; }
+    Mod+Comma { consume-window-into-column; }
     Mod+Period { expel-window-from-column; }
 
     // === Sizing & Layout ===
     Mod+R { switch-preset-column-width; }
-    Mod+Shift+R { switch-preset-window-height; }
+    Mod+Shift+R { switch-preset-column-width-back; }
+    Mod+Ctrl+Shift+R { switch-preset-window-height; }
     Mod+Ctrl+R { reset-window-height; }
+    Mod+F { maximize-column; }
+    Mod+Shift+F { fullscreen-window; }
     Mod+Ctrl+F { expand-column-to-available-width; }
+    Mod+Ctrl+Shift+F { toggle-windowed-fullscreen; }
+    Mod+M { maximize-window-to-edges; }
     Mod+C { center-column; }
     Mod+Ctrl+C { center-visible-columns; }
 
     // === Manual Sizing ===
     Mod+Minus { set-column-width "-10%"; }
     Mod+Equal { set-column-width "+10%"; }
-    Mod+Shift+Minus { set-window-height "-10%"; }
-    Mod+Shift+Equal { set-window-height "+10%"; }
+    Mod+Ctrl+Minus { set-column-width "-1"; }
+    Mod+Ctrl+Equal { set-column-width "+1"; }
+
+    Mod+Shift+Minus      { set-window-height "-10%"; }
+    Mod+Shift+Equal      { set-window-height "+10%"; }
+    Mod+Shift+Ctrl+Minus { set-window-height "-1"; }
+    Mod+Shift+Ctrl+Equal { set-window-height "+1"; }
 
     // === Screenshots ===
-    XF86Launch1 { screenshot; }
-    Ctrl+XF86Launch1 { screenshot-screen; }
-    Alt+XF86Launch1 { screenshot-window; }
     Print { screenshot; }
     Ctrl+Print { screenshot-screen; }
     Alt+Print { screenshot-window; }
+
     // === System Controls ===
     Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
     Mod+Shift+P { power-off-monitors; }
+    Ctrl+Alt+Delete { quit; }
 }
