@@ -12,15 +12,14 @@ colors_changed = "update-noctalia-config"
 
 [shell]
 launch_apps_as_systemd_services = true
+middle_click_opens_widget_settings = false
 polkit_agent = true
 telemetry_enabled = true
 
 [bar.main]
-position = "top"
 center = [ "clock", "active_window" ]
-end = [ "tray", "media", "clipboard", "network", "bluetooth", "volume", "brightness", "battery", "notifications" ]
-start = [ "session", "workspaces" ]
-widget_spacing = 10
+end = [ "tray", "clipboard", "network", "bluetooth", "volume", "brightness", "battery", "pacmanupdatecount", "notifications" ]
+start = [ "session", "workspaces", "media" ]
 
 [lockscreen]
 blurred_desktop = true
@@ -57,3 +56,13 @@ hide_when_no_media = true
 
 [widget.network]
 show_label = false
+
+[widget.pacmanupdatecount]
+script = "/home/kopa/.config/noctalia/scripts/pacmanupdatecount.lua"
+type = "scripted"
+update_interval = 60
+glyph = "packages"
+aur_helper = "paru"
+color_bool = false
+color_count = 100
+color_is = "error"

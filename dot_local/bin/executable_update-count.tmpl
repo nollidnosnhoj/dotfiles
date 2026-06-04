@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+{{ $hasParu := lookPath "paru" -}}
+{{ $hasBrew := lookPath "brew" -}}
+{{ $hasMise := lookPath "mise" -}}
+
+set -euo pipefail
+
+total=0
+
+count_lines() {
+    wc -l | tr -d '[:space:]'
+}
+
+{{ if $hasBrew }}
+# Homebrew packages
+brew_count="$({ brew outdated --quiet 2>/dev/null || true; } | count_lines)"
+total=$((total + brew_count))
+{{ end }}
+{{ if $hasParu }}
+# Arch repository packages
+if command -v checkupdates >/dev/null 2>&1; then
+    pacman_count="$({ checkupdates 2>/dev/null || true; } | count_lines)"
+else
+    pacman_count=0
+fi
+
+# AUR packages
+aur_count="$({ paru -Qua 2>/dev/null || true; } | count_lines)"
+total=$((total + pacman_count + aur_count))
+{{ end }}
+{{ if $hasMise }}
+# mise tools
+mise_count="$({ mise outdated 2>/dev/null || true; } | awk 'NR > 1 && NF { count++ } END { print count + 0 }')"
+total=$((total + mise_count))
+{{ end }}
+
+echo "$total"

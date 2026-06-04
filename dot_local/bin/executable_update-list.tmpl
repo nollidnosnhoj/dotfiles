@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+{{ $hasParu := lookPath "paru" -}}
+{{ $hasBrew := lookPath "brew" -}}
+{{ $hasMise := lookPath "mise" -}}
+
+set -euo pipefail
+
+printed_section=false
+
+print_section() {
+    if [ "$printed_section" = true ]; then
+        echo
+    fi
+    echo "$1"
+    echo "${1//?/=}"
+    printed_section=true
+}
+
+{{ if $hasBrew }}
+print_section "Homebrew packages"
+if ! brew outdated 2>/dev/null; then
+    true
+fi
+{{ end }}
+{{ if $hasParu }}
+print_section "Arch Linux packages"
+if command -v checkupdates >/dev/null 2>&1; then
+    if ! checkupdates 2>/dev/null; then
+        true
+    fi
+else
+    echo "checkupdates not found"
+fi
+
+print_section "AUR packages"
+if ! paru -Qua 2>/dev/null; then
+    true
+fi
+{{ end }}
+{{ if $hasMise }}
+print_section "mise tools"
+if ! mise outdated 2>/dev/null; then
+    true
+fi
+{{ end }}
