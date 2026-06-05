@@ -5,9 +5,12 @@ if ! command -v chezmoi &> /dev/null; then
     exit 1
 fi
 
-chezmoi add ~/.config/btop/
-chezmoi add ~/.config/foot/
-chezmoi add ~/.config/kitty/
-chezmoi add ~/.config/niri/
-chezmoi add ~/.config/yazi/
-chezmoi add ~/.config/starship.toml
+chezmoi add \
+    ~/.config/btop/ \
+    ~/.config/foot/ \
+    ~/.config/kitty/ \
+    ~/.config/niri/ \
+    ~/.config/yazi/ \
+    ~/.config/starship.toml \
+    ~/.pi/agent/settings.json \
+    ~/.pi/agent/themes/noctalia.json
