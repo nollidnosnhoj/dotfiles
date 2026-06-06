@@ -8,6 +8,7 @@
 .config/mpv/
 .config/niri/
 .local/bin/update-noctalia-config
+.local/share/applications/fastfetch-kitty.desktop
 {{ end }}
 
 README.md

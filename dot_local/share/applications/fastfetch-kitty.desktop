@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Fastfetch
+Comment=Show system information in Kitty
+Exec=kitty --class fastfetch --title fastfetch --hold fastfetch
+Icon=utilities-terminal
+Terminal=false
+Categories=System;
+StartupWMClass=fastfetch

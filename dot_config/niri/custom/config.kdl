@@ -200,6 +200,12 @@ window-rule {
     match app-id=r#"jetbrains-rider$"#
     open-focused true
 }
+window-rule {
+    match app-id="fastfetch"
+    open-floating true
+    default-column-width { fixed 900; }
+    default-window-height { fixed 480; }
+}
 debug {
     honor-xdg-activation-with-invalid-serial
 }
