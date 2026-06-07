@@ -6,66 +6,17 @@ set -euo pipefail
 echo "Updating Arch repositories"
 sudo pacman -Syu
 
-CORE_PACKAGES=(
-    aspnet-runtime
-    aspnet-targeting-pack
-    btop
-    dotnet-sdk
-    dotnet-runtime
-    eza
-    fd
-    fish
-    fzf
-    lazygit
-    less
-    neovim-git
-    opencode-bin
-    pacman-contrib
-    podman
-    podman-docker
-    ripgrep
-    starship
-    usage
-    wget
-    xdg-utils
-    yazi
-    zellij
-    zoxide
-)
-
 echo "Installing core packages..."
-paru -S --needed ${CORE_PACKAGES[@]}
+paru -S --needed {{ .packages.arch.core | join " " }}
 
 {{ if eq .osid "linux-arch" -}}
-GPU_PACKAGES=(
-    vulkan-icd-loader
-    lib32-vulkan-icd-loader
-    vulkan-radeon
-    lib32-vulkan-radeon
-)
-
 echo "Installing gpu-related packages..."
-paru -S --needed ${GPU_PACKAGES[@]}
+paru -S --needed {{ .packages.arch.gpu | join " " }}
 {{ end -}}
 
-GUI_PACKAGES=(
-    bitwarden-bin
-    vscodium
-    zed
-)
-
-FONT_PACKAGES=(
-    otf-comicshanns-nerd
-    noto-fonts
-    noto-fonts-cjk
-    noto-fonts-emoji
-    ttf-dejavu
-    ttf-jetbrains-mono-nerd
-)
-
 echo "Installing gui-related packages..."
-paru -S --needed ${GUI_PACKAGES[@]}
+paru -S --needed {{ .packages.arch.gui | join " " }}
 
 echo "Installing font packages..."
-paru -S --needed ${FONT_PACKAGES[@]}
+paru -S --needed {{ .packages.arch.fonts | join " " }}
 {{ end -}}

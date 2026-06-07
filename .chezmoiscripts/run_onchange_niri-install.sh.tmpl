@@ -3,27 +3,6 @@
 
 set -euo pipefail
 
-NIRI_PACKAGES=(
-    adw-gtk-theme
-    cliphist
-    ddcutil
-    evolution-data-server
-    foot
-    kitty
-    mpv
-    nautilus
-    niri
-    # noctalia-git
-    nwg-look
-    python3
-    wlsunset
-    xclip
-    xdg-desktop-portal
-    xdg-desktop-portal-gnome
-    xdg-desktop-portal-gtk
-    xwayland-satellite
-)
-
 echo "Installing niri-related packages..."
-paru -S --needed ${NIRI_PACKAGES[@]}
+paru -S --needed {{ .packages.arch.niri | join " " }}
 {{ end -}}
