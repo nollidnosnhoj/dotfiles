@@ -3,6 +3,8 @@
 	email = {{ .email | quote }}
 {{- if eq .hosttype "work" }}
 	signingkey = "~/.ssh/id_rsa.pub"
+{{- else if eq .hosttype "wsl" }}
+	signingkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIP2ieFj6mYYyynIan2yoldvMGmJbxiw7Od36eUsSbDP9 me@nollidnosnhoj.com"
 {{- else }}
 	signingkey = "~/.ssh/id_ed25519.pub"
 {{- end }}
