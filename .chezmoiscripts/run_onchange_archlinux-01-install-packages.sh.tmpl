@@ -8,15 +8,4 @@ sudo pacman -Syu
 
 echo "Installing core packages..."
 paru -S --needed {{ .packages.arch.core | join " " }}
-
-{{ if eq .osid "linux-arch" -}}
-echo "Installing gpu-related packages..."
-paru -S --needed {{ .packages.arch.gpu | join " " }}
-{{ end -}}
-
-echo "Installing gui-related packages..."
-paru -S --needed {{ .packages.arch.gui | join " " }}
-
-echo "Installing font packages..."
-paru -S --needed {{ .packages.arch.fonts | join " " }}
 {{ end -}}

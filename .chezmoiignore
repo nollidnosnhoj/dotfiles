@@ -3,13 +3,17 @@
 .config/aerospace/
 {{ end -}}
 
-{{ if not .niri }}
+{{ if not .niri -}}
 .config/foot/
 .config/mpv/
 .config/niri/
 .local/bin/update-noctalia-config
 .local/share/applications/fastfetch-kitty.desktop
-{{ end }}
+{{ end -}}
+
+{{ if not .wsl -}}
+.config/fish/conf.d/wsl2-ssh-agent.fish
+{{ end -}}
 
 README.md
 .config/sketchybar
