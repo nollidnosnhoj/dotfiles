@@ -1,5 +1,6 @@
 spawn-at-startup "noctalia"
 spawn-at-startup "bash" "-c" "wl-paste --watch cliphist store &"
+spawn-at-startup "niri-dynamic-float"
 
 config-notification {
     disable-failed
@@ -57,6 +58,7 @@ layout {
     gaps 10
     background-color "transparent"
     center-focused-column "never"
+    always-center-single-column
     preset-window-heights { }
     default-column-width { proportion 1.0; }
     preset-column-widths {

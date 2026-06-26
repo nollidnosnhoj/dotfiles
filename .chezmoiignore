@@ -11,6 +11,7 @@
 .config/foot/
 .config/mpv/
 .config/niri/
+.local/bin/niri-dynamic-float
 .local/bin/update-noctalia-config
 .local/share/applications/fastfetch-kitty.desktop
 {{ end -}}
