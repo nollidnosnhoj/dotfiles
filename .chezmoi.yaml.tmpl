@@ -1,4 +1,4 @@
-{{- $choices := list "msa1" -}}
+{{- $choices := list "desktop" "laptop" -}}
 {{- $hosttype := "" -}}
 {{- $osid := .chezmoi.os -}}
 {{- $email := "me@nollidnosnhoj.com" -}}
@@ -35,13 +35,21 @@
 {{-     end -}}
 {{- end -}}
 
+encryption: age
+age:
+    identity: "~/.config/chezmoi/key.txt"
+    recipient: age1w86ktsveqqux2etahn80098wrcn98f03xjgykghfqz6vxk85n5ysaguj79
+
+hooks:
+    read-source-state:
+        pre:
+            command: ".local/share/chezmoi/.decrypt-private-key.sh"
 data:
     name: {{ $name | quote }}
     osid: {{ $osid | quote }}
     email: {{ $email | quote }}
     hosttype: {{ $hosttype | quote }}
     niri: {{ $niri }}
-    wsl: {{ $wsl }}
     packages:
         arch:
             core:
@@ -83,6 +91,8 @@ data:
             gui:
             - bitwarden-bin
             - helium-browser-bin
+            - mullvad-browser-bin
+            - vesktop-bin
             - vscodium-bin
             - zed
             - zen-browser-bin

@@ -16,7 +16,7 @@
 .local/share/applications/fastfetch-kitty.desktop
 {{ end -}}
 
-{{ if not .wsl -}}
+{{ if ne .hosttype "wsl" -}}
 .config/fish/conf.d/wsl2-ssh-agent.fish
 {{ end -}}
 
