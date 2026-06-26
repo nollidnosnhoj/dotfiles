@@ -1,4 +1,8 @@
 {{ $bitwardenPath := lookPath "bitwarden" -}}
+{{ if eq $bitwardenPath "" -}}
+.config/fish/conf.d/bw-ssh-agent.fish
+{{ end -}}
+
 {{ if ne .osid "darwin" -}}
 .config/aerospace/
 {{ end -}}

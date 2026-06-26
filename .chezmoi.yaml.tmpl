@@ -1,4 +1,4 @@
-{{- $choices := list "framework16" -}}
+{{- $choices := list "msa1" -}}
 {{- $hosttype := "" -}}
 {{- $osid := .chezmoi.os -}}
 {{- $email := "me@nollidnosnhoj.com" -}}
@@ -11,8 +11,10 @@
 {{- end -}}
 
 {{- if eq .chezmoi.os "linux" -}}
-{{-     $hosttype = "wsl" -}}
 {{-     $wsl = (.chezmoi.kernel.osrelease | lower | contains "microsoft") -}}
+{{-     if $wsl -}}
+{{-         $hosttype = "wsl" -}}
+{{-     end -}}
 {{- end -}}
 
 {{- if eq $osid "darwin" -}}
@@ -26,7 +28,11 @@
 {{- end -}}
 
 {{- if eq $hosttype "" -}}
-{{-     $hosttype = promptChoiceOnce . "hosttype" "What type of host are you on" $choices -}}
+{{-     if and (hasKey . "hosttype") (has .hosttype $choices) -}}
+{{-         $hosttype = .hosttype -}}
+{{-     else -}}
+{{-         $hosttype = promptChoice "What type of host are you on" $choices -}}
+{{-     end -}}
 {{- end -}}
 
 data:
@@ -45,6 +51,7 @@ data:
             - dotnet-sdk
             - dotnet-runtime
             - eza
+            - fastfetch
             - fd
             - fish
             - fzf
@@ -75,8 +82,10 @@ data:
             - lib32-vulkan-radeon
             gui:
             - bitwarden-bin
-            - vscodium
+            - helium-browser-bin
+            - vscodium-bin
             - zed
+            - zen-browser-bin
             fonts:
             - otf-comicshanns-nerd
             - noto-fonts
@@ -89,10 +98,13 @@ data:
             - cliphist
             - ddcutil
             - foot
+            - greetd
             - kitty
             - mpv
             - nautilus
             - niri
+            - noctalia-git
+            - noctalia-greeter-git
             - xdg-desktop-portal
             - xdg-desktop-portal-gnome
             - xdg-desktop-portal-gtk
