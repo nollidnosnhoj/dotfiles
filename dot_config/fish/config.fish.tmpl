@@ -1,5 +1,9 @@
 ﻿{{ if eq .osid "linux-cachyos" -}}
 source /usr/share/cachyos-fish-config/cachyos-config.fish
+functions --erase update
+function update
+    "$HOME/.local/bin/update" $argv
+end
 {{ else -}}
 if test -f ~/.fish_profile
     source ~/.fish_profile

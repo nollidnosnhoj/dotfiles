@@ -2,13 +2,17 @@
 {{- $hasParu := lookPath "paru" -}}
 {{- $hasBrew := lookPath "brew" -}}
 {{- $hasMise := lookPath "mise" -}}
+{{- $hasShelly := lookPath "shelly" -}}
 
 {{ if $hasBrew }}
 echo "Updating Homebrew packages..."
 brew update
 brew upgrade
 {{ end }}
-{{ if $hasParu }}
+{{ if $hasShelly }}
+echo "Updating system packages with shelly..."
+shelly
+{{ else if $hasParu }}
 echo "Updating Arch Linux packages..."
 sudo pacman -Syu
 echo "Update AUR packages"
