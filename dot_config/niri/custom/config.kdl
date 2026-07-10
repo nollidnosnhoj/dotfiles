@@ -40,7 +40,7 @@ output "Samsung Electric Company LC49G95T H4ZT404758" {
     variable-refresh-rate
     focus-at-startup
     layout {
-        default-column-width { proportion 0.3333; }
+        default-column-width { proportion 0.33333; }
         preset-column-widths {
             proportion 0.25
             proportion 0.33333
