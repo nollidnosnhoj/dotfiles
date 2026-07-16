@@ -2,6 +2,9 @@
 #!/bin/bash
 set -euo pipefail
 
+{{ range .packages.darwin.taps -}}
+brew tap {{ . }}
+{{ end -}}
 brew install {{ .packages.darwin.formulae | join " " }}
 brew install --cask {{ .packages.darwin.casks | join " " }}
 {{ end -}}
