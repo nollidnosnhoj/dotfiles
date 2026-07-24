@@ -10,8 +10,6 @@ enable-normalization-opposite-orientation-for-nested-containers = true
 # Start AeroSpace at login
 start-at-login = true
 
-# after-startup-command = ['exec-and-forget sketchybar']
-
 # Possible values: tiles|accordion
 default-root-container-layout = "accordion"
 
@@ -27,8 +25,6 @@ on-focus-changed = 'move-mouse window-lazy-center'
 # The 'accordion-padding' specifies the size of accordion padding
 # You can set 0 to disable the padding feature
 accordion-padding = 30
-
-# exec-on-workspace-change = ['/bin/bash', '-c', 'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE PREV_WORKSPACE=$AEROSPACE_PREV_WORKSPACE && ~/.config/sketchybar/plugins/update_workspace_icons.sh']
 
 [key-mapping]
 preset = 'qwerty'
