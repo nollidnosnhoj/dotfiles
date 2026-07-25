@@ -1,0 +1,8 @@
+[settings]
+experimental = true
+
+[tools]
+go = "latest"
+node = "latest"
+pi = "latest"
+pnpm = "latest"
