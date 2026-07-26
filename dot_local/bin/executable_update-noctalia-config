@@ -12,5 +12,4 @@ chezmoi add \
     ~/.config/niri/ \
     ~/.config/yazi/ \
     ~/.config/starship.toml \
-    ~/.pi/agent/settings.json \
     ~/.pi/agent/themes/noctalia.json
