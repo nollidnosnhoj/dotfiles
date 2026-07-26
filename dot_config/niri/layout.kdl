@@ -1,0 +1,29 @@
+layout {
+    gaps 10
+    background-color "transparent"
+    center-focused-column "never"
+    always-center-single-column
+    preset-window-heights { }
+    default-column-width { proportion 1.0; }
+    preset-column-widths {
+        proportion 0.5
+        proportion 1.0
+    }
+    shadow {
+        softness 30
+        spread 5
+        offset x=0 y=5
+        color "#0007"
+    }
+    struts {
+    }
+}
+layer-rule {
+  match namespace="^noctalia-backdrop"
+  place-within-backdrop true
+}
+overview {
+    workspace-shadow {
+        off
+    }
+}

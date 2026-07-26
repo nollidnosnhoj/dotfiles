@@ -1,3 +1,11 @@
 // Include dms files
 include "noctalia.kdl"
-include "custom/config.kdl"
+include "startup.kdl"
+include "input.kdl"
+include "outputs.kdl"
+include "layout.kdl"
+include "environment.kdl"
+include "animations.kdl"
+include "window-rules.kdl"
+include "recent-windows.kdl"
+include "binds.kdl"

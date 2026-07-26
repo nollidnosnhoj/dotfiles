@@ -1,0 +1,104 @@
+window-rule {
+    // This regular expression is intentionally made as specific as possible,
+    // since this is the default config, and we want no false positives.
+    // You can get away with just app-id="wezterm" if you want.
+    match app-id=r#"^org\.wezfurlong\.wezterm$"#
+    default-column-width {}
+}
+window-rule {
+    match app-id=r#"^org\.gnome\."#
+    draw-border-with-background false
+    geometry-corner-radius 12
+    clip-to-geometry true
+}
+window-rule {
+    match app-id=r#"^gnome-control-center$"#
+    match app-id=r#"^pavucontrol$"#
+    match app-id=r#"^nm-connection-editor$"#
+    default-column-width { proportion 0.5; }
+    open-floating false
+}
+window-rule {
+    match app-id=r#"^gnome-calculator$"#
+    match app-id=r#"^galculator$"#
+    match app-id=r#"^blueman-manager$"#
+    match app-id=r#"^org\.gnome\.Nautilus$"#
+    match app-id=r#"^xdg-desktop-portal$"#
+    open-floating true
+}
+window-rule {
+    match app-id=r#"^jetbrains-toolbox$"#
+    open-floating true
+    default-floating-position x=10 y=10 relative-to="top-right"
+}
+window-rule {
+    match app-id=r#"^steam$"# title=r#"^notificationtoasts_\d+_desktop$"#
+    default-floating-position x=10 y=10 relative-to="bottom-right"
+    open-focused false
+}
+window-rule {
+    match app-id=r#"^org\.wezfurlong\.wezterm$"#
+    match app-id="Alacritty"
+    match app-id="zen"
+    match app-id="com.mitchellh.ghostty"
+    match app-id="kitty"
+    draw-border-with-background false
+}
+window-rule {
+    match is-active=false
+    // helium browser is used to watch youtube, twitch, etc.
+    exclude app-id="helium$"
+    opacity 0.9
+}
+window-rule {
+  // Rounded corners for a modern look.
+  geometry-corner-radius 20
+
+  // Clips window contents to the rounded corner boundaries.
+  clip-to-geometry true
+}
+window-rule {
+    match app-id="zen$" title="^Picture-in-Picture$"
+    match app-id="firefox$" title="^Picture-in-Picture$"
+    match app-id="helium$" title="^Picture-in-Picture$"
+    match app-id="" title="^Picture in picture$"
+    match app-id="zoom"
+    open-floating true
+}
+// Floating Noctalia settings window.
+window-rule {
+  match app-id="dev.noctalia.Noctalia"
+  open-floating true
+  default-column-width { fixed 1080; }
+  default-window-height { fixed 920; }
+}
+window-rule {
+    match app-id=r#"jetbrains-rider$"#
+    open-focused true
+}
+window-rule {
+    match app-id="fastfetch"
+    open-floating true
+    default-column-width { fixed 900; }
+    default-window-height { fixed 480; }
+}
+window-rule {
+    match app-id="com.chatterino.chatterino"
+    default-column-width { fixed 400; }
+}
+window-rule {
+    match app-id="com.chatterino.chatterino" title="^Chatterino Settings$"
+    open-floating true
+    default-column-width { fixed 900; }
+    default-window-height { fixed 480; }
+}
+// Block out password managers from screencasts.
+window-rule {
+    match app-id=r#"^bitwarden$"#
+    match app-id=r#"^org\.gnome\.World\.Secrets$"#
+
+    block-out-from "screencast"
+}
+debug {
+    honor-xdg-activation-with-invalid-serial
+}

@@ -1,0 +1,19 @@
+output "Samsung Electric Company LC49G95T H4ZT404758" {
+    mode "5120x1440@119.999"
+    position x=0 y=0
+    variable-refresh-rate
+    focus-at-startup
+    layout {
+        default-column-width { proportion 0.33333; }
+        preset-column-widths {
+            proportion 0.25
+            proportion 0.33333
+            proportion 0.5
+        }
+    }
+}
+output "eDP-1" {
+    mode "2560x1600@165.000"
+    position x=0 y=0
+    variable-refresh-rate
+}
