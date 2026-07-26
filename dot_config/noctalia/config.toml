@@ -1,0 +1,48 @@
+[backdrop]
+enabled = true
+
+[bar.main]
+start = [ "workspaces", "media" ]
+center = [ "clock", "active_window" ]
+end = [ "tray", "clipboard", "network", "bluetooth", "volume", "brightness", "battery", "notifications" ]
+layer = "overlay"
+smart_auto_hide = true
+
+[calendar]
+enabled = true
+
+[control_center.calendar]
+show_week_numbers = true
+
+[hooks]
+colors_changed = "update-noctalia-config"
+
+[location]
+auto_locate = true
+
+[lockscreen]
+blurred_desktop = true
+
+[nightlight]
+enabled = true
+
+[shell]
+font_family = "JetBrainsMono Nerd Font"
+polkit_agent = true
+
+[shell.greeter_sync]
+auto_sync = true
+
+[theme]
+builtin = "Tokyo-Night"
+pure_black_dark = true
+
+[wallpaper]
+per_monitor_directories = true
+
+[wallpaper.automation]
+enabled = true
+recursive = false
+
+[widget.network]
+show_label = false
