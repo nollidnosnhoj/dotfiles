@@ -8,9 +8,16 @@
 {{ end -}}
 
 {{ if not .niri -}}
+.config/btop/
 .config/foot/
+.config/gtk-3.0/
+.config/gtk-4.0/
+.config/kitty/
 .config/mpv/
 .config/niri/
+.config/noctalia/
+.config/qt5ct/
+.config/qt6ct/
 .local/bin/niri-dynamic-float
 .local/bin/update-noctalia-config
 .local/share/applications/fastfetch-kitty.desktop
