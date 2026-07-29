@@ -19,6 +19,8 @@ chezmoi add \
     ~/.pi/agent/themes/noctalia.json \
     ~/.config/zed/themes/noctalia.json \
     ~/.config/bat/themes/noctalia.tmTheme \
-    ~/.config/lazygit/themes/noctalia.yml \
+    ~/.config/lazygit/ \
+    ~/.config/yazi/theme.toml \
     ~/.config/yazi/flavors/noctalia.yazi/flavor.toml \
-    ~/.config/yazi/flavors/noctalia.yazi/tmtheme.xml
+    ~/.config/yazi/flavors/noctalia.yazi/tmtheme.xml \
+    ~/.config/starship.toml
