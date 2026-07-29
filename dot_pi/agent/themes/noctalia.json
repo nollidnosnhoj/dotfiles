@@ -2,9 +2,9 @@
     "$schema": "https://raw.githubusercontent.com/earendil-works/pi/main/packages/coding-agent/src/modes/interactive/theme/theme-schema.json",
     "name": "noctalia",
     "vars": {
-        "bg": "#1a1b26",
-        "bgAlt": "#24283b",
-        "bgAlt2": "#2c3148",
+        "bg": "#000000",
+        "bgAlt": "#0f1325",
+        "bgAlt2": "#171c32",
         "fg": "#c0caf5",
         "fgMuted": "#9aa5ce",
         "accent": "#7aa2f7",
@@ -15,8 +15,8 @@
         "outlineVar": "#3b4561",
         "primaryCont": "#003dbf",
         "errorCont": "#bb0023",
-        "surfaceLow": "#1f2130",
-        "surfaceLowest": "#1c1d2a",
+        "surfaceLow": "#080a18",
+        "surfaceLowest": "#03030d",
         "primaryFixed": "#b7cdfb",
         "secondaryFixedDim": "#af89f6"
     },

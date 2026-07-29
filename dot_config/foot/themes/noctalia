@@ -1,6 +1,6 @@
 [colors-dark]
 foreground=c0caf5
-background=1a1b26
+background=000000
 regular0=15161e
 regular1=f7768e
 regular2=9ece6a
@@ -19,4 +19,4 @@ bright6=7dcfff
 bright7=c0caf5
 selection-foreground=c0caf5
 selection-background=283457
-cursor=1a1b26 c0caf5
+cursor=000000 c0caf5
