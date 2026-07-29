@@ -10,6 +10,7 @@ chezmoi add \
     ~/.config/foot/themes/noctalia/ \
     ~/.config/gtk-3.0/noctalia.css \
     ~/.config/gtk-4.0/noctalia.css \
+    ~/.config/ghostty/themes/noctalia \
     ~/.config/kitty/themes/noctalia.conf \
     ~/.config/niri/noctalia.kdl \
     ~/.config/qt5ct/colors/noctalia.conf \
