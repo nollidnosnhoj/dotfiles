@@ -13,8 +13,8 @@
     "on_background": "#c0caf5",
     "error": "#f7768e",
     "on_error": "#16161e",
-    "outline": "#586691",
-    "outline_variant": "#3b4561"
+    "outline": "#5d6682",
+    "outline_variant": "#3d4355"
   },
   "theme": {
     "primary": {
