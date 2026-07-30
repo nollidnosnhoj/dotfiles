@@ -3,6 +3,11 @@
 .config/fish/conf.d/bw-ssh-agent.fish
 {{ end -}}
 
+{{ $brewPath := lookPath "brew" -}}
+{{ if eq $brewPath "" -}}
+.config/fish/conf.d/brew.fish
+{{ end -}}
+
 {{ if ne .osid "darwin" -}}
 .config/aerospace/
 {{ end -}}
