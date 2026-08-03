@@ -2,6 +2,7 @@
 experimental = true
 
 [tools]
+aspire = "latest"
 go = "latest"
 node = "latest"
 pi = "latest"
