@@ -63,7 +63,7 @@ outer.right = 2
 
 # You can uncomment this line to open up terminal with alt + enter shortcut
 # See: https://nikitabobko.github.io/AeroSpace/commands#exec-and-forget
-# alt-enter = 'exec-and-forget open -n /System/Applications/Utilities/Terminal.app'
+alt-enter = 'exec-and-forget open -n ghostty'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#layout
 alt-slash = 'layout tiles horizontal vertical'
@@ -179,6 +179,10 @@ alt-shift-l = ['join-with right', 'mode main']
 
 [[on-window-detected]]
 if = { app-id = 'com.microsoft.edgemac' }
+run = 'move-node-to-workspace 1'
+
+[[on-window-detected]]
+if = { app-id = 'app.zen-browser.zen' }
 run = 'move-node-to-workspace 1'
 
 [[on-window-detected]]
