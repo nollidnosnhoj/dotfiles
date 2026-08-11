@@ -4,6 +4,8 @@ experimental = true
 [tools]
 aspire = "latest"
 go = "latest"
+herdr = "latest"
 node = "latest"
+opencode = "latest"
 pi = "latest"
 pnpm = "latest"

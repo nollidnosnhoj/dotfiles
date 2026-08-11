@@ -152,16 +152,16 @@ title_error = { fg = "#f7768e" }
 
 rules = [
     # Images
-    { mime = "image/*", fg = "#94e2d5" },
+    { mime = "image/*", fg = "#87abf8" },
 
     # Media
-    { mime = "{audio,video}/*", fg = "#f9e2af" },
+    { mime = "{audio,video}/*", fg = "#c1e996" },
 
     # Archives
-    { mime = "application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma,compress,archive,cpio,arj,xar,ms-cab*}", fg = "#f5c2e7" },
+    { mime = "application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma,compress,archive,cpio,arj,xar,ms-cab*}", fg = "#bb9af7" },
 
     # Documents
-    { mime = "application/{pdf,doc,rtf}", fg = "#a6e3a1" },
+    { mime = "application/{pdf,doc,rtf}", fg = "#9ece6a" },
 
     # Special files
     { mime = "*", is = "orphan", fg = "#fccfd7", bg = "#bb0023" },
