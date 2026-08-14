@@ -17,6 +17,12 @@ if test -d ~/.local/bin
 end
 {{ end -}}
 
+if test -d /usr/local/bin
+    if not contains -- /usr/local/bin $PATH
+        set -p PATH /usr/local/bin
+    end
+end
+
 function fish_greeting
     # show nothing
 end

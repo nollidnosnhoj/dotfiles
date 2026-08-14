@@ -8,7 +8,13 @@
 .config/fish/conf.d/brew.fish
 {{ end -}}
 
-{{ if ne .osid "darwin" -}}
+{{ $orbPath := lookPath "orb" -}}
+{{ if eq $orbPath "" -}}
+.config/fish/conf.d/orb.fish
+{{ end -}}
+
+{{ $aerospacePath := lookPath "aerospace" -}}
+{{ if eq $aerospacePath "" -}}
 .config/aerospace/
 {{ end -}}
 
