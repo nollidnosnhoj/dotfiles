@@ -3,7 +3,6 @@
 {{- $osid := .chezmoi.os -}}
 {{- $email := "me@nollidnosnhoj.com" -}}
 {{- $name := "Dillon Johnson" -}}
-{{- $niri := false -}}
 {{- $wsl := false -}}
 
 {{- if (and (eq .chezmoi.os "linux") (hasKey .chezmoi.osRelease "id")) -}}
@@ -21,10 +20,6 @@
 {{-     $hosttype = "work" -}}
 {{-     $email = "rjohnson@gericall.nl" -}}
 {{-     $name = "Randall Dillon Johnson" -}}
-{{- end -}}
-
-{{- if (and (eq .chezmoi.os "linux") (not $wsl)) -}}
-{{-     $niri = promptBool "Install niri?" -}}
 {{- end -}}
 
 {{- if eq $hosttype "" -}}
@@ -49,14 +44,12 @@ data:
     osid: {{ $osid | quote }}
     email: {{ $email | quote }}
     hosttype: {{ $hosttype | quote }}
-    niri: {{ $niri }}
     packages:
         arch:
             core:
             - aspnet-runtime
             - aspnet-targeting-pack
             - btop
-            - dotnet-sdk
             - dotnet-runtime
             - eza
             - fastfetch
@@ -81,42 +74,35 @@ data:
             - xdg-utils
             - yazi
             - zoxide
-            gpu:
-            - vulkan-icd-loader
-            - lib32-vulkan-icd-loader
-            - vulkan-radeon
-            - lib32-vulkan-radeon
-            gui:
-            - bitwarden-bin
-            - helium-browser-bin
-            - mullvad-browser-bin
-            - vesktop-bin
-            - vscodium-bin
-            - zed
-            - zen-browser-bin
-            fonts:
-            - otf-comicshanns-nerd
-            - noto-fonts
-            - noto-fonts-cjk
-            - noto-fonts-emoji
-            - ttf-dejavu
-            - ttf-jetbrains-mono-nerd
-            niri:
+            desktop:
             - adw-gtk-theme
+            - bitwarden-bin
             - cliphist
             - ddcutil
             - foot
             - greetd
+            - helium-browser-bin
             - kitty
+            - noto-fonts
+            - noto-fonts-cjk
+            - noto-fonts-emoji
+            - otf-comicshanns-nerd
             - mpv
+            - mullvad-browser-bin
             - nautilus
             - niri
-            - noctalia-git
+            - noctalia
             - noctalia-greeter-git
+            - ttf-dejavu
+            - ttf-jetbrains-mono-nerd
+            - vesktop-bin
+            - vscodium-bin
             - xdg-desktop-portal
             - xdg-desktop-portal-gnome
             - xdg-desktop-portal-gtk
             - xwayland-satellite
+            - zed
+            - zen-browser-bin
         darwin:
             taps:
             formulae:

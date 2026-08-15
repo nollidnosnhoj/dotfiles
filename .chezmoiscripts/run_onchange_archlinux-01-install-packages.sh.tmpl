@@ -8,4 +8,9 @@ sudo pacman -Syu
 
 echo "Installing core packages..."
 paru -S --needed {{ .packages.arch.core | join " " }}
+
+{{ if eq .osid "linux-cachyos" -}}
+echo "Installing desktop packages..."
+paru -S --needed {{ .packages.arch.desktop | join " " }}
+{{ end -}}
 {{ end -}}
