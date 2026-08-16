@@ -46,3 +46,6 @@ recursive = false
 
 [widget.network]
 show_label = false
+
+[widget.workspaces]
+show_labels = false
