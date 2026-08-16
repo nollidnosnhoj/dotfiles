@@ -180,7 +180,6 @@ hl.workspace_rule({ workspace = "1",  persistent = true, default_name = "web" })
 hl.workspace_rule({ workspace = "2",  persistent = true, default_name = "code" })
 hl.workspace_rule({ workspace = "3",  persistent = true, default_name = "chat" })
 hl.workspace_rule({ workspace = "4",  persistent = true, default_name = "game" })
-hl.workspace_rule({ workspace = "5",  persistent = true, default_name = "design" })
 -- hl.window_rule({
 --     name  = "no-gaps-wtv1",
 --     match = { float = false, workspace = "w[tv1]" },
@@ -204,7 +203,7 @@ hl.config({
 -- See https://wiki.hypr.land/Configuring/Layouts/Master-Layout/ for more
 hl.config({
     master = {
-        new_status = "master",
+        new_status = "slave",
         orientation = "center",
         slave_count_for_center_master = 0,
         mfact = 0.48
@@ -344,14 +343,13 @@ hl.bind("XF86AudioPrev",  hl.dsp.exec_cmd(ipc .. "media previous"),   { locked =
 
 -- Example window rules that are useful
 
-local suppressMaximizeRule = hl.window_rule({
+hl.window_rule({
     -- Ignore maximize requests from all apps. You'll probably like this.
     name  = "suppress-maximize-events",
     match = { class = ".*" },
 
     suppress_event = "maximize",
 })
--- suppressMaximizeRule:set_enabled(false)
 
 hl.window_rule({
     -- Fix some dragging issues with XWayland
@@ -390,6 +388,22 @@ hl.window_rule({
     match = { class = "dev.noctalia.Noctalia" },
     float = true,
     size = { 1080, 920 },
+})
+
+-- nautilus
+hl.window_rule({
+    match = {
+        class = "org.gnome.Nautilus",
+    },
+    float = true
+})
+
+-- jetbrains toolbox
+hl.window_rule({
+    match = {
+        class = "jetbrains-toolbox"
+    },
+    float = true,
 })
 
 hl.layer_rule({
