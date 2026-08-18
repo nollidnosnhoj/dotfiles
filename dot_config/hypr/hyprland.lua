@@ -270,38 +270,49 @@ hl.device({
 ---------------------
 
 local mainMod = "SUPER" -- Sets "Windows" key as main modifier
-local ipc = "noctalia msg "
+local noctaliaIpc = "noctalia msg "
 
 -- Example binds, see https://wiki.hypr.land/Configuring/Basics/Binds/ for more
+
+-- apps
 hl.bind(mainMod .. " + RETURN", hl.dsp.exec_cmd(terminal))
-local closeWindowBind = hl.bind(mainMod .. " + Q", hl.dsp.window.close())
--- closeWindowBind:set_enabled(false)
 hl.bind(mainMod .. " + N", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd(browser))
-hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
--- hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
-hl.bind(mainMod .. " + Slash", hl.dsp.layout("togglesplit")) -- dwindle only
-hl.bind(mainMod .. " + Tab", hl.dsp.focus({ workspace = "previous" }))
 
 -- noctalia
-hl.bind(mainMod .. "+Space", hl.dsp.exec_cmd(ipc .. "panel-toggle launcher"))
-hl.bind(mainMod .. "+S", hl.dsp.exec_cmd(ipc .. "panel-toggle control-center"))
-hl.bind(mainMod .. "+comma", hl.dsp.exec_cmd(ipc .. "settings-toggle"))
-hl.bind("ALT + Tab", hl.dsp.exec_cmd(ipc .. "window-switcher"))
+hl.bind(mainMod .. "+Space", hl.dsp.exec_cmd(noctaliaIpc .. "panel-toggle launcher"))
+hl.bind(mainMod .. "+S", hl.dsp.exec_cmd(noctaliaIpc .. "panel-toggle control-center"))
+hl.bind(mainMod .. "+comma", hl.dsp.exec_cmd(noctaliaIpc .. "settings-toggle"))
+hl.bind(mainMod .. "+X", hl.dsp.exec_cmd(noctaliaIpc .. "panel-toggle session"))
+hl.bind(mainMod .. "+Y", hl.dsp.exec_cmd(noctaliaIpc .. "panel-toggle wallpaper"))
+hl.bind("ALT + Tab", hl.dsp.exec_cmd(noctaliaIpc .. "window-switcher"))
 
+-- security
+hl.bind(mainMod .. "+ALT+L", hl.dsp.exec_cmd(noctaliaIpc .. "session lock"))
+
+-- window management
+hl.bind(mainMod .. " + Q", hl.dsp.window.close())
+hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
+hl.bind(mainMod .. " + Tab", hl.dsp.focus({ workspace = "previous" }))
+
+-- window movement
+-- use arrow keys or vim keys to move windows
 local directions = {
     left = "h",
     right = "l",
     up = "k",
     down = "j",
 }
-
 for dir, vim in pairs(directions) do
     hl.bind(mainMod .. " + " .. dir, hl.dsp.focus({ direction = dir }))
     hl.bind(mainMod .. " + SHIFT + " .. dir, hl.dsp.window.move({ direction = dir }))
     hl.bind(mainMod .. " + " .. vim, hl.dsp.focus({ direction = dir }))
     hl.bind(mainMod .. " + SHIFT + " .. vim, hl.dsp.window.move({ direction = dir }))
 end
+
+-- Move/resize windows with mainMod + LMB/RMB and dragging
+hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(),   { mouse = true })
+hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
 
 -- Switch workspaces with mainMod + [0-9]
 -- Move active window to a workspace with mainMod + SHIFT + [0-9]
@@ -315,23 +326,19 @@ end
 hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
 hl.bind(mainMod .. " + mouse_up",   hl.dsp.focus({ workspace = "e-1" }))
 
--- Move/resize windows with mainMod + LMB/RMB and dragging
-hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(),   { mouse = true })
-hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
-
 -- Laptop multimedia keys for volume and LCD brightness
-hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd(ipc .. "volume-up"), { locked = true, repeating = true })
-hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd(ipc .. "volume-down"), { locked = true, repeating = true })
-hl.bind("XF86AudioMute", hl.dsp.exec_cmd(ipc .. "volume-mute"), { locked = true, repeating = true })
-hl.bind("XF86AudioMicMute", hl.dsp.exec_cmd(ipc .. "mic-mute"), { locked = true, repeating = true })
-hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd(ipc .. "brightness-up"), { locked = true, repeating = true })
-hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd(ipc .. "brightness-down"), { locked = true, repeating = true })
+hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd(noctaliaIpc .. "volume-up"), { locked = true, repeating = true })
+hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd(noctaliaIpc .. "volume-down"), { locked = true, repeating = true })
+hl.bind("XF86AudioMute", hl.dsp.exec_cmd(noctaliaIpc .. "volume-mute"), { locked = true, repeating = true })
+hl.bind("XF86AudioMicMute", hl.dsp.exec_cmd(noctaliaIpc .. "mic-mute"), { locked = true, repeating = true })
+hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd(noctaliaIpc .. "brightness-up"), { locked = true, repeating = true })
+hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd(noctaliaIpc .. "brightness-down"), { locked = true, repeating = true })
 
 -- Requires playerctl
-hl.bind("XF86AudioNext",  hl.dsp.exec_cmd(ipc .. "media next"),       { locked = true })
-hl.bind("XF86AudioPause", hl.dsp.exec_cmd(ipc .. "media toggle"), { locked = true })
-hl.bind("XF86AudioPlay",  hl.dsp.exec_cmd(ipc .. "media toggle"), { locked = true })
-hl.bind("XF86AudioPrev",  hl.dsp.exec_cmd(ipc .. "media previous"),   { locked = true })
+hl.bind("XF86AudioNext",  hl.dsp.exec_cmd(noctaliaIpc .. "media next"),       { locked = true })
+hl.bind("XF86AudioPause", hl.dsp.exec_cmd(noctaliaIpc .. "media toggle"), { locked = true })
+hl.bind("XF86AudioPlay",  hl.dsp.exec_cmd(noctaliaIpc .. "media toggle"), { locked = true })
+hl.bind("XF86AudioPrev",  hl.dsp.exec_cmd(noctaliaIpc .. "media previous"),   { locked = true })
 
 
 --------------------------------
@@ -341,7 +348,121 @@ hl.bind("XF86AudioPrev",  hl.dsp.exec_cmd(ipc .. "media previous"),   { locked =
 -- See https://wiki.hypr.land/Configuring/Basics/Window-Rules/
 -- and https://wiki.hypr.land/Configuring/Basics/Workspace-Rules/
 
--- Example window rules that are useful
+-- These utility windows remain tiled and use half the available width.
+hl.window_rule({
+    name = "utility-windows-tiled",
+    match = {
+        class = "^(gnome-control-center|pavucontrol|nm-connection-editor)$",
+    },
+    float = false,
+    size = { "50%", "100%" },
+})
+
+hl.window_rule({
+    name = "utility-windows-floating",
+    match = {
+        class = "^(gnome-calculator|galculator|blueman-manager|org\\.gnome\\.Nautilus|xdg-desktop-portal)$",
+    },
+    float = true,
+})
+
+hl.window_rule({
+    name = "web-workspace-programs",
+    match = {
+        class = "^(helium)$",
+    },
+    workspace = "1",
+})
+
+hl.window_rule({
+    name = "coding-workspace-programs",
+    match = {
+        class = "^(codium|dev.zed.Zed|jetbrains-rider)$"
+    },
+    workspace = "2"
+})
+
+hl.window_rule({
+    name = "chat-workspace-programs",
+    match = {
+        class = "^(vesktop)$",
+    },
+    workspace = "3",
+})
+
+hl.window_rule({
+    name = "jetbrains-toolbox-position",
+    match = { class = "^jetbrains-toolbox$" },
+    float = true,
+    move = "monitor_w-10-w 10",
+})
+
+hl.window_rule({
+    name = "steam-notification-toast",
+    match = {
+        class = "^steam$",
+        title = "^notificationtoasts_[0-9]+_desktop$",
+    },
+    move = "monitor_w-10-w monitor_h-10-h",
+    no_focus = true,
+})
+
+hl.window_rule({
+    name = "picture-in-picture",
+    match = {
+        class = "^(zen|firefox|helium)$",
+        title = "^Picture-in-Picture$",
+    },
+    float = true,
+})
+
+hl.window_rule({
+    name = "picture-in-picture-alt",
+    match = { class = "^$", title = "^Picture in picture$" },
+    float = true,
+})
+
+hl.window_rule({
+    name = "zoom-floating",
+    match = { class = "^zoom$" },
+    float = true,
+})
+
+hl.window_rule({
+    name = "jetbrains-rider-focused",
+    match = { class = "^jetbrains-rider$" },
+    no_initial_focus = false,
+})
+
+hl.window_rule({
+    name = "fastfetch-floating",
+    match = { class = "^fastfetch$" },
+    float = true,
+    size = { 900, 480 },
+})
+
+hl.window_rule({
+    name = "chatterino-size",
+    match = { class = "^com\\.chatterino\\.chatterino$" },
+    size = { 400, "100%" },
+})
+
+hl.window_rule({
+    name = "chatterino-settings",
+    match = {
+        class = "^com\\.chatterino\\.chatterino$",
+        title = "^Chatterino Settings$",
+    },
+    float = true,
+    size = { 900, 480 },
+})
+
+-- Prevent password managers from appearing in screen shares.
+hl.window_rule({
+    name = "password-manager-no-screen-share",
+    match = { class = "^(bitwarden|org\\.gnome\\.World\\.Secrets)$" },
+    no_screen_share = true,
+})
 
 hl.window_rule({
     -- Ignore maximize requests from all apps. You'll probably like this.
@@ -388,22 +509,6 @@ hl.window_rule({
     match = { class = "dev.noctalia.Noctalia" },
     float = true,
     size = { 1080, 920 },
-})
-
--- nautilus
-hl.window_rule({
-    match = {
-        class = "org.gnome.Nautilus",
-    },
-    float = true
-})
-
--- jetbrains toolbox
-hl.window_rule({
-    match = {
-        class = "jetbrains-toolbox"
-    },
-    float = true,
 })
 
 hl.layer_rule({
