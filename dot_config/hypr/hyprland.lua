@@ -23,8 +23,8 @@
 
 -- See https://wiki.hypr.land/Configuring/Basics/Monitors/
 hl.monitor({
-    output   = "",
-    mode     = "preferred",
+    output   = "DP-2",
+    mode     = "5120x1440@120",
     position = "auto",
     scale    = "auto",
 })
@@ -36,7 +36,7 @@ hl.monitor({
 
 -- Set programs that you use
 local terminal    = "kitty"
-local fileManager = "nautilus"
+local fileManager = "thunar"
 local browser     = "zen-browser"
 
 
@@ -361,7 +361,7 @@ hl.window_rule({
 hl.window_rule({
     name = "utility-windows-floating",
     match = {
-        class = "^(gnome-calculator|galculator|blueman-manager|org\\.gnome\\.Nautilus|xdg-desktop-portal)$",
+        class = "^(gnome-calculator|galculator|blueman-manager|thunar|xdg-desktop-portal)$",
     },
     float = true,
 })
@@ -508,6 +508,11 @@ hl.window_rule({
 hl.window_rule({
     match = { class = "dev.noctalia.Noctalia" },
     float = true,
+    size = { 1080, 920 },
+})
+
+hl.window_rule({
+    match = { class = "thunar" },
     size = { 1080, 920 },
 })
 
