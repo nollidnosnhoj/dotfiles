@@ -1,0 +1,5 @@
+return {
+    terminal = "kitty",
+    fileManager = "thunar",
+    browser = "zen-browser",
+}
