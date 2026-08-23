@@ -28,6 +28,10 @@ return function (programs)
 
     hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
     hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
+    hl.bind(mainMod .. " + equal", hl.dsp.window.resize({ x = 100, y = 0, relative = true }), { repeating = true })
+    hl.bind(mainMod .. " + minus", hl.dsp.window.resize({ x = -100, y = 0, relative = true }), { repeating = true })
+    hl.bind(mainMod .. " + SHIFT + equal", hl.dsp.window.resize({ x = 0, y = 100, relative = true }), { repeating = true })
+    hl.bind(mainMod .. " + SHIFT + minus", hl.dsp.window.resize({ x = 0, y = 100, relative = true }), { repeating = true })
 
     for i = 1, 10 do
         local key = i % 10
