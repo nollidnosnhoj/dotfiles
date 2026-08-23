@@ -1,8 +1,3 @@
-{{ $bitwardenPath := lookPath "bitwarden" -}}
-{{ if eq $bitwardenPath "" -}}
-.config/fish/conf.d/bw-ssh-agent.fish
-{{ end -}}
-
 {{ $brewPath := lookPath "brew" -}}
 {{ if eq $brewPath "" -}}
 .config/fish/conf.d/brew.fish
