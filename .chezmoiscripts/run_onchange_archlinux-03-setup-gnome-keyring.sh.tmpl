@@ -1,0 +1,50 @@
+{{- $validOs := list "linux-arch" "linux-cachyos" -}}
+{{ if has .osid $validOs -}}
+#!/bin/bash
+set -euo pipefail
+
+echo "Installing GNOME Keyring and GCR SSH agent..."
+paru -S --needed gnome-keyring libsecret gcr-4 seahorse
+
+echo "Enabling GNOME Keyring user units..."
+systemctl --user enable --now gnome-keyring-daemon.service gnome-keyring-daemon.socket
+
+echo "Enabling GCR SSH agent..."
+systemctl --user enable --now gcr-ssh-agent.socket
+
+cat <<'EOF'
+
+GNOME Keyring and the GCR SSH agent are enabled. Complete these steps:
+
+1. Configure PAM for your login manager. For greetd, add these lines to
+   /etc/pam.d/greetd. For TTY logins, add them to /etc/pam.d/login instead:
+
+   auth       optional     pam_gnome_keyring.so
+   session    optional     pam_gnome_keyring.so auto_start
+
+   Do not add these blindly if your login manager already configures them.
+
+2. Log out of your graphical session and log back in so PAM can unlock the
+   keyring and the user environment is refreshed.
+
+3. Open Seahorse and create or verify a keyring named Login. Set its password
+   to your Linux login password so PAM can unlock it automatically.
+
+4. Add this to ~/.ssh/config if you want SSH to load keys on first use:
+
+   Host *
+       AddKeysToAgent yes
+
+5. To store an SSH key passphrase in GNOME Keyring, run:
+
+   /usr/lib/seahorse/ssh-askpass ~/.ssh/id_ed25519
+
+6. Verify the setup after logging back in:
+
+   echo "$SSH_AUTH_SOCK"
+   ssh-add -l
+
+   The SSH agent socket should be $XDG_RUNTIME_DIR/gcr/ssh. "The agent has
+   no identities" is expected until a key has been added.
+EOF
+{{ end -}}
