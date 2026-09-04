@@ -6,6 +6,7 @@ if ! command -v chezmoi &> /dev/null; then
 fi
 
 chezmoi add \
+    ~/.config/bat/themes/noctalia.tmTheme \
     ~/.config/btop/themes/noctalia.theme \
     ~/.config/foot/themes/noctalia/ \
     ~/.config/fzf/themes/noctalia.fish \
@@ -16,15 +17,15 @@ chezmoi add \
     ~/.config/herdr/config.toml \
     ~/.config/hypr/noctalia.lua \
     ~/.config/kitty/themes/noctalia.conf \
+    ~/.config/lazygit/ \
     ~/.config/niri/noctalia.kdl \
+    ~/.config/opencode/themes/matugen.json \
     ~/.config/qt5ct/colors/noctalia.conf \
     ~/.config/qt6ct/colors/noctalia.conf \
-    ~/.config/opencode/themes/matugen.json \
-    ~/.pi/agent/themes/noctalia.json \
-    ~/.config/zed/themes/noctalia.json \
-    ~/.config/bat/themes/noctalia.tmTheme \
-    ~/.config/lazygit/ \
+    ~/.config/umbriel/noctalia.toml \
     ~/.config/yazi/theme.toml \
     ~/.config/yazi/flavors/noctalia.yazi/flavor.toml \
     ~/.config/yazi/flavors/noctalia.yazi/tmtheme.xml \
-    ~/.config/starship.toml
+    ~/.config/zed/themes/noctalia.json \
+    ~/.config/starship.toml \
+    ~/.pi/agent/themes/noctalia.json \
