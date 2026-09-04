@@ -40,6 +40,7 @@ rule("fix-xwayland-drags", {
     pin = false,
 }, { no_focus = true })
 rule("move-hyprland-run", { class = "hyprland-run" }, { move = "20 monitor_h-120", float = true })
+rule("fastfetch-floating", { class = "^fastfetch$" }, { float = true, size = { 950, 480 } })
 
 hl.window_rule({
     match = { class = "dev.noctalia.Noctalia" },

@@ -1,5 +1,5 @@
 return {
-    terminal = "kitty",
+    terminal = "foot",
     fileManager = "thunar",
     browser = "zen-browser",
 }
