@@ -25,6 +25,7 @@
 .config/noctalia/
 .config/qt5ct/
 .config/qt6ct/
+.config/umbriel/
 .local/bin/niri-dynamic-float
 .local/bin/update-noctalia-config
 .local/share/applications/fastfetch-kitty.desktop
