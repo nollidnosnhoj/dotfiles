@@ -3,7 +3,6 @@ experimental = true
 
 [tools]
 aspire = "latest"
-dotnet = "10"
 go = "latest"
 herdr = "latest"
 java = "latest"
