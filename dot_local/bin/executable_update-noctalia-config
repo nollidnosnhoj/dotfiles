@@ -8,9 +8,12 @@ fi
 chezmoi add \
     ~/.config/btop/themes/noctalia.theme \
     ~/.config/foot/themes/noctalia/ \
+    ~/.config/fzf/themes/noctalia.fish \
+    ~/.config/fzf/themes/noctalia.sh \
     ~/.config/gtk-3.0/noctalia.css \
     ~/.config/gtk-4.0/noctalia.css \
     ~/.config/ghostty/themes/noctalia \
+    ~/.config/herdr/config.toml \
     ~/.config/hypr/noctalia.lua \
     ~/.config/kitty/themes/noctalia.conf \
     ~/.config/niri/noctalia.kdl \

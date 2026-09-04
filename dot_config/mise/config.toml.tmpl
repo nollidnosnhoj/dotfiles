@@ -3,6 +3,10 @@ experimental = true
 
 [tools]
 aspire = "latest"
+bun = "latest"
+{{ if eq .osid "linux-cachyos" -}}
+dotnet = "10"
+{{- end }}
 go = "latest"
 herdr = "latest"
 java = "latest"

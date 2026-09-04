@@ -6,6 +6,9 @@ start = [ "workspaces", "media" ]
 center = [ "clock", "active_window" ]
 end = [ "tray", "clipboard", "network", "bluetooth", "volume", "brightness", "battery", "notifications" ]
 layer = "overlay"
+margin_edge = 5
+padding = 18
+radius = 10
 smart_auto_hide = true
 
 [calendar]
@@ -30,12 +33,12 @@ enabled = true
 font_family = "JetBrainsMono Nerd Font"
 polkit_agent = true
 
-[shell.greeter_sync]
-auto_sync = true
-
 [theme]
 builtin = "Tokyo-Night"
-pure_black_dark = true
+
+[theme.templates]
+builtin_ids = [ "btop", "foot", "gtk3", "gtk4", "ghostty", "hyprland", "kitty", "niri", "qt", "starship" ]
+community_ids = [ "opencode", "pi-agent", "zen-browser", "obsidian", "zed", "papirus-icons", "bat", "lazygit", "yazi" ]
 
 [wallpaper]
 per_monitor_directories = true
@@ -43,6 +46,9 @@ per_monitor_directories = true
 [wallpaper.automation]
 enabled = true
 recursive = false
+
+[widget.clock]
+format = "{:%A} {:%H:%M}"
 
 [widget.network]
 show_label = false
