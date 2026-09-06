@@ -445,7 +445,7 @@ expand_single_column = false                     # Let a lone column fill the vi
 # preserve_split = false                        # Keep every split direction fixed after creation
 
 [layout.master]
-position = "center"                               # left or right master area
+position = "left"                               # left or right master area
 default_width_fraction = 0.55                   # Initial master area fraction, 0.1-0.9
 new_on_top = true                               # Put new windows at the top of the stack
 
