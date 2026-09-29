@@ -412,7 +412,7 @@ follows_mouse = true                           # Focus the pointer target after 
 [layout]
 mode = "master"                              # scrolling, dwindle, or master
 gap = 8                                         # Logical pixels between tiles, 0-500
-extent_presets = [0.333, 0.5, 0.667]             # Width and height cycling fractions
+extent_presets = [0.45, 0.55, 0.667]             # Width and height cycling fractions
 
 [layout.struts]
 # Signed logical pixels reserved after panel exclusive zones. Negative values

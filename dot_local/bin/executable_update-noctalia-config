@@ -15,7 +15,6 @@ chezmoi add \
     ~/.config/gtk-4.0/noctalia.css \
     ~/.config/ghostty/themes/noctalia \
     ~/.config/herdr/config.toml \
-    ~/.config/hypr/noctalia.lua \
     ~/.config/kitty/themes/noctalia.conf \
     ~/.config/lazygit/ \
     ~/.config/niri/noctalia.kdl \
