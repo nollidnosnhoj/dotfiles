@@ -42,7 +42,7 @@ honor_restored_maximize = false                 # Honor restored maximized state
 # Documentation: https://docs.noctalia.dev/umbriel/configuration/#environment
 
 [environment]
-GTK_THEME = "Adwaita:dark"
+# Let GTK use ~/.config/gtk-3.0/settings.ini and Noctalia's CSS colors.
 QT_QPA_PLATFORMTHEME = "qt5ct"
 
 # Hardware events
@@ -272,6 +272,7 @@ follows_mouse = true                           # Focus the pointer target after 
 "Alt+Tab" = "spawn:noctalia msg window-switcher"
 "Mod+Alt+L" = "spawn:noctalia msg session lock"
 "Mod+Q" = "window-close"
+"Ctrl+Alt+Delete" = "spawn:noctalia msg panel-toggle session"
 
 # Focus navigation. In overview, Mod+Up/Down retain normal layout focus, so they
 # traverse stacks in the default horizontal layout. Bare Up/Down move between
@@ -413,6 +414,7 @@ follows_mouse = true                           # Focus the pointer target after 
 mode = "master"                              # scrolling, dwindle, or master
 gap = 8                                         # Logical pixels between tiles, 0-500
 extent_presets = [0.45, 0.55, 0.667]             # Width and height cycling fractions
+new_exits_fullscreen = "tiled"
 
 [layout.struts]
 # Signed logical pixels reserved after panel exclusive zones. Negative values
@@ -435,6 +437,7 @@ center_focused = "never"                          # Always center the focused co
 position = "center"                               # left or right master area
 default_width_fraction = 0.55                   # Initial master area fraction, 0.1-0.9
 new_on_top = true                               # Put new windows at the top of the stack
+new_becomes_master = false
 
 # ───────────────────────────── Window Rules ─────────────────────────────────
 # Match windows by application ID, title, XDG tag, content type, or focus state.
