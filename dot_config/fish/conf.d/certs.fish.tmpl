@@ -1,0 +1,5 @@
+{{ if eq .osid "linux-cachyos" -}}
+if not set -q SSL_CERT_DIR
+    set -gx SSL_CERT_DIR /etc/ssl/certs
+end
+{{ end -}}

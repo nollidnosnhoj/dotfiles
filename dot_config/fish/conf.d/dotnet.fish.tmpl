@@ -11,5 +11,5 @@ fish_add_path $HOME/.aspire/bin
 
 {{ if eq .osid "linux-cachyos" -}}
 # Include the ASP.NET development certificate directory on CachyOS.
-set -gx SSL_CERT_DIR "$HOME/.aspnet/dev-certs/trust:/etc/ssl/certs"
+set -gx SSL_CERT_DIR "$HOME/.aspnet/dev-certs/trust:$SSL_CERT_DIR"
 {{ end -}}
