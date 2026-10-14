@@ -9,5 +9,7 @@ set -gx ASPIRE_CONTAINER_RUNTIME podman
 # Added by get-aspire-cli.sh
 fish_add_path $HOME/.aspire/bin
 
-# for dev certs
+{{ if eq .osid "linux-cachyos" -}}
+# Include the ASP.NET development certificate directory on CachyOS.
 set -gx SSL_CERT_DIR "$HOME/.aspnet/dev-certs/trust:/etc/ssl/certs"
+{{ end -}}
