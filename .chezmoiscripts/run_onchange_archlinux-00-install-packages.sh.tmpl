@@ -3,6 +3,16 @@
 #!/bin/bash
 set -euo pipefail
 
+if ! command -v paru >/dev/null 2>&1; then
+    echo "paru not found, installing..."
+    sudo pacman -S --needed base-devel
+    git clone https://aur.archlinux.org/paru.git
+    pushd paru
+    makepkg -si
+    popd
+    rm -rf paru
+fi
+
 echo "Updating Arch repositories"
 sudo pacman -Syu
 

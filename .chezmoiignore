@@ -26,6 +26,8 @@
 .config/qt5ct/
 .config/qt6ct/
 .config/umbriel/
+.config/uwsm/
+.config/xdg-terminals.list
 .local/bin/niri-dynamic-float
 .local/bin/update-noctalia-config
 .local/share/applications/fastfetch-kitty.desktop
@@ -36,4 +38,3 @@
 {{ end -}}
 
 README.md
-.config/fish/conf.d/fnm.fish

@@ -1,0 +1,4 @@
+export XCURSOR=24
+export SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/gcr/ssh
+export TERMINAL=foot
+export ELECTRON_OZONE_PLATFORM_HINT=auto
