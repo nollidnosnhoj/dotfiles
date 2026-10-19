@@ -8,6 +8,8 @@
 echo "Updating Homebrew packages..."
 brew update
 brew upgrade
+echo "Updating Homebrew casks..."
+brew upgrade --cask --greedy
 {{ end }}
 {{ if $hasShelly }}
 echo "Updating system packages with shelly..."
