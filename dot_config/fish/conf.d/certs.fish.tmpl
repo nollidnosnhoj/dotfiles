@@ -2,4 +2,9 @@
 if not set -q SSL_CERT_DIR
     set -gx SSL_CERT_DIR /etc/ssl/certs
 end
+{{ else if eq .osid "darwin" -}}
+# Use the system CA bundle for CLI tools such as gh.
+if not set -q SSL_CERT_FILE
+    set -gx SSL_CERT_FILE /etc/ssl/cert.pem
+end
 {{ end -}}
