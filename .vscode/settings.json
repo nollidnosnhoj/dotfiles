@@ -3,8 +3,5 @@
         "*.tmpl": "handlebars",
         ".chezmoiignore": "handlebars"
     },
-    "editor.formatOnSave": false,
-    "Lua.workspace.library": [
-      "/usr/share/hypr/stubs"
-    ]
+    "editor.formatOnSave": false
 }

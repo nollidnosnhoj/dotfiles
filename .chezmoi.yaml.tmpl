@@ -47,11 +47,7 @@ data:
     packages:
         arch:
             core:
-            - aspnet-runtime
-            - aspnet-targeting-pack
             - btop
-            - dotnet-runtime
-            - dotnet-sdk
             - eza
             - fastfetch
             - fd
@@ -62,12 +58,8 @@ data:
             - jq
             - lazygit
             - less
-            - neovim-git
+            - neovim
             - pacman-contrib
-            {{- if not $wsl }}
-            - podman
-            - podman-docker
-            {{- end }}
             - ripgrep
             - starship
             - usage
@@ -77,22 +69,19 @@ data:
             - zoxide
             desktop:
             - adw-gtk-theme
-            - bitwarden-bin
             - cliphist
-            - code
             - ddcutil
-            - foot
+            - ffmpegthumbnailer
+            - file-roller
             - greetd
+            - gvfs
             - helium-browser-bin
-            - hyprland
             - kitty
             - libnewt
             - noto-fonts
             - noto-fonts-cjk
             - noto-fonts-emoji
             - otf-comicshanns-nerd
-            - mpv
-            - mullvad-browser-bin
             - noctalia
             - noctalia-greeter
             - thunar
@@ -101,15 +90,12 @@ data:
             - ttf-dejavu
             - ttf-jetbrains-mono-nerd
             - tumbler
-            - uwsm
-            - vesktop-bin
+            - umbriel-git
             - xdg-desktop-portal
             - xdg-desktop-portal-gtk
-            - xdg-desktop-portal-hyprland
             - xdg-terminal-exec
             - xwayland-satellite
             - zed
-            - zen-browser-bin
         darwin:
             taps:
             formulae:

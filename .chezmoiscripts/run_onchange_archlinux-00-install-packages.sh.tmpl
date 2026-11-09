@@ -1,5 +1,4 @@
-{{- $validOs := list "linux-arch" "linux-cachyos" -}}
-{{ if has .osid $validOs -}}
+{{ if eq .osid "linux-arch" -}}
 #!/bin/bash
 set -euo pipefail
 
@@ -19,7 +18,7 @@ sudo pacman -Syu
 echo "Installing core packages..."
 paru -S --needed {{ .packages.arch.core | join " " }}
 
-{{ if eq .osid "linux-cachyos" -}}
+{{ if and (eq .osid "linux-arch") (eq .hosttype "desktop") -}}
 echo "Installing desktop packages..."
 paru -S --needed {{ .packages.arch.desktop | join " " }}
 {{ end -}}

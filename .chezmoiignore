@@ -5,31 +5,12 @@
 
 {{ $orbPath := lookPath "orb" -}}
 {{ if eq $orbPath "" -}}
-.config/fish/conf.d/orb.fish
+.config/fish/conf.d/orbstack.fish
 {{ end -}}
 
-{{ $aerospacePath := lookPath "aerospace" -}}
-{{ if eq $aerospacePath "" -}}
-.config/aerospace/
-{{ end -}}
-
-{{ if ne .osid "linux-cachyos" -}}
+{{ if or (ne .osid "linux-arch") (ne .hosttype "desktop") -}}
 .config/btop/
-.config/foot/
-.config/gtk-3.0/
-.config/gtk-4.0/
-.config/hypr/
-.config/kitty/
-.config/mpv/
-.config/niri/
-.config/noctalia/
-.config/qt5ct/
-.config/qt6ct/
-.config/umbriel/
-.config/uwsm/
 .config/xdg-terminals.list
-.local/bin/niri-dynamic-float
-.local/bin/update-noctalia-config
 .local/share/applications/fastfetch-kitty.desktop
 {{ end -}}
 

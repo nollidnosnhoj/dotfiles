@@ -1,4 +1,4 @@
-{{- if eq .osid "linux-cachyos" -}}
+{{- if and (eq .osid "linux-arch") (eq .hosttype "desktop") -}}
 #!/bin/bash
 set -euo pipefail
 
@@ -8,8 +8,8 @@ if ! command -v xdg-mime >/dev/null 2>&1; then
 fi
 
 xdg-mime default thunar.desktop inode/directory
-xdg-mime default zen.desktop text/html
-xdg-mime default zen.desktop x-scheme-handler/http
-xdg-mime default zen.desktop x-scheme-handler/https
-xdg-settings set default-web-browser zen.desktop
+xdg-mime default helium.desktop text/html
+xdg-mime default helium.desktop x-scheme-handler/http
+xdg-mime default helium.desktop x-scheme-handler/https
+xdg-settings set default-web-browser helium.desktop
 {{- end -}}
