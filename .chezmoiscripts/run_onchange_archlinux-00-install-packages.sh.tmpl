@@ -12,14 +12,14 @@ if ! command -v paru >/dev/null 2>&1; then
     rm -rf paru
 fi
 
-echo "Updating Arch repositories"
-sudo pacman -Syu
-
-echo "Installing core packages..."
-paru -S --needed {{ .packages.arch.core | join " " }}
-
+packages=(
+    {{ .packages.arch.core | join " " }}
 {{ if and (eq .osid "linux-arch") (eq .hosttype "desktop") -}}
-echo "Installing desktop packages..."
-paru -S --needed {{ .packages.arch.desktop | join " " }}
+    {{ .packages.arch.desktop | join " " }}
 {{ end -}}
+)
+
+# Match update's policy: check upstream Git commits, not just AUR versions.
+echo "Updating Arch Linux and AUR packages and installing configured packages..."
+paru -Syu --devel --needed "${packages[@]}"
 {{ end -}}

@@ -11,14 +11,12 @@ brew upgrade
 echo "Updating Homebrew casks..."
 brew upgrade --cask --greedy
 {{ end }}
-{{ if $hasShelly }}
+{{ if $hasParu }}
+echo "Updating Arch Linux and AUR packages (including Git packages)..."
+paru -Syu --devel
+{{ else if $hasShelly }}
 echo "Updating system packages with shelly..."
 shelly
-{{ else if $hasParu }}
-echo "Updating Arch Linux packages..."
-sudo pacman -Syu
-echo "Update AUR packages"
-paru -Sua
 {{ end }}
 {{ if $hasMise }}
 echo "Updating mise..."
