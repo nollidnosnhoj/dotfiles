@@ -1,1 +1,3 @@
-brew shellenv | source
+if command -q brew
+    brew shellenv | source
+end
