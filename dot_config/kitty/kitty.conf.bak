@@ -1,0 +1,4 @@
+include themes/noctalia.conf
+font_family family="JetBrainsMono Nerd Font" style=Medium
+font_size 12
+
