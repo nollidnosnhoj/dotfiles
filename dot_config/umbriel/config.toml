@@ -186,7 +186,7 @@ numlock_toggle = true
 [keybinds]
 
 # Applications and session
-"Mod+Return" = { action = "spawn kitty", repeat = false }
+"Mod+Return" = { action = "spawn foot", repeat = false }
 "Mod+Space" = "spawn noctalia msg panel-toggle launcher"
 "Mod+Q" = { action = "window-close", repeat = false }
 "Mod+Escape" = "session-quit"
