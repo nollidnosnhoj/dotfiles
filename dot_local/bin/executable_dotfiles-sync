@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Capture changes to managed live files without replacing source templates.
+# Pass chezmoi re-add options or destination paths through unchanged.
+exec chezmoi re-add "$@"
