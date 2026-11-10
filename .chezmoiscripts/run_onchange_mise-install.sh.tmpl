@@ -1,0 +1,20 @@
+#!/bin/bash
+
+set -euo pipefail
+
+# Reinstall when the tool configuration changes.
+# mise config: {{ include "dot_config/mise/config.toml" | sha256sum }}
+
+mise_bin="$(command -v mise || true)"
+if [[ -z "$mise_bin" && -x "$HOME/.local/bin/mise" ]]; then
+    mise_bin="$HOME/.local/bin/mise"
+fi
+
+if [[ -z "$mise_bin" ]]; then
+    echo "Mise is not installed. Installing mise..."
+    curl https://mise.run | sh
+    mise_bin="$HOME/.local/bin/mise"
+fi
+
+echo "Installing languages and tools with Mise..."
+"$mise_bin" install
