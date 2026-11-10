@@ -1,0 +1,211 @@
+# Interactive Bash configuration, matching the portable Fish settings.
+[[ $- != *i* ]] && return
+
+PS1='[\u@\h \W]\$ '
+
+# Prepend existing directories without duplicating PATH entries.
+__path_prepend() {
+    [[ -d $1 ]] || return 0
+    case ":$PATH:" in
+        *":$1:"*) ;;
+        *) export PATH="$1:$PATH" ;;
+    esac
+}
+
+if command -v brew >/dev/null 2>&1; then
+    eval "$(brew shellenv bash)"
+fi
+
+__path_prepend "$HOME/.local/bin"
+__path_prepend /usr/local/bin
+export EDITOR=nvim
+export GOPATH="$HOME/go"
+__path_prepend "$GOPATH/bin"
+__path_prepend "$HOME/.dotnet/tools"
+export ASPIRE_CONTAINER_RUNTIME=podman
+__path_prepend "$HOME/.aspire/bin"
+__path_prepend "$HOME/.opencode/bin"
+__path_prepend "$HOME/.orbstack/bin"
+export PNPM_HOME="$HOME/.local/share/pnpm"
+__path_prepend "$PNPM_HOME/bin"
+unset -f __path_prepend
+
+{{ if and (eq .osid "linux-arch") (eq .hosttype "desktop") -}}
+if [[ ! ${SSL_CERT_DIR+x} ]]; then
+    export SSL_CERT_DIR=/etc/ssl/certs
+fi
+{{ else if eq .osid "darwin" -}}
+if [[ ! ${SSL_CERT_FILE+x} ]]; then
+    export SSL_CERT_FILE=/etc/ssl/cert.pem
+fi
+{{ end -}}
+
+if command -v mise >/dev/null 2>&1; then
+    eval "$(mise activate bash)"
+fi
+if command -v pi >/dev/null 2>&1; then
+    export PI_SKIP_VERSION_CHECK=1
+fi
+
+# Useful aliases; retain the system ls when eza is unavailable.
+if command -v eza >/dev/null 2>&1; then
+    alias ls='eza -al --color=always --group-directories-first --icons=always'
+    alias la='eza -a --color=always --group-directories-first --icons=always'
+    alias ll='eza -l --color=always --group-directories-first --icons=always'
+    alias lt='eza -aT --color=always --group-directories-first --icons=always'
+    alias l.="eza -a | grep -e '^\.'"
+fi
+alias tarnow='tar -acf '
+alias untar='tar -zxvf '
+alias wget='wget -c '
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
+alias ......='cd ../../../../..'
+{{ if ne .osid "darwin" -}}
+alias dir='dir --color=auto'
+alias vdir='vdir --color=auto'
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+{{ end -}}
+alias c='clear'
+alias lzg='lazygit'
+if command -v codium >/dev/null 2>&1; then
+    alias code='codium'
+fi
+
+# Bash supports !! and !$ natively; only timestamp formatting is needed.
+HISTTIMEFORMAT='%F %T '
+
+backup() {
+    if [[ $# != 1 ]]; then
+        printf 'Usage: backup <filename>\n' >&2
+        return 2
+    fi
+    command cp -- "$1" "$1.bak"
+}
+
+copy() {
+    if [[ $# == 2 && -d $1 ]]; then
+        # A trailing slash should not change how cp treats the source directory.
+        local from=${1%/}
+        command cp -r -- "${from:-/}" "$2"
+    else
+        command cp -- "$@"
+    fi
+}
+
+# Emit unique local socket owners as PORT, PROTOCOL, PID, PROCESS.
+__port_processes() (
+    if ! command -v lsof >/dev/null 2>&1; then
+        printf 'This function requires lsof.\n' >&2
+        return 1
+    fi
+
+    command lsof -nP -i -FpcPn | command awk '
+        /^p/ { pid = substr($0, 2) }
+        /^c/ { process = substr($0, 2) }
+        /^P/ { protocol = substr($0, 2) }
+        /^n/ {
+            address = substr($0, 2)
+            sub(/->.*/, "", address)
+            sub(/^.*:/, "", address)
+            if (address ~ /^[0-9]+$/ && protocol ~ /^(TCP|UDP)$/)
+                printf "%s\t%s\t%s\t%s\n", address, protocol, pid, process
+        }
+    ' | command sort -u -k1,1n -k2,2 -k3,3n
+)
+
+__valid_port() {
+    [[ $1 =~ ^[0-9]{1,5}$ ]] && (( 10#$1 >= 1 && 10#$1 <= 65535 ))
+}
+
+# Includes listening sockets and the local ports of established connections.
+ports() {
+    if (( $# > 1 )); then
+        printf 'Usage: ports [port]\n' >&2
+        return 2
+    fi
+    if (( $# == 1 )) && ! __valid_port "$1"; then
+        printf 'Port must be an integer between 1 and 65535.\n' >&2
+        return 2
+    fi
+
+    local rows
+    rows=$(__port_processes) || return 1
+    if (( $# == 1 )); then
+        rows=$(printf '%s\n' "$rows" | command awk -v port="$1" '$1 + 0 == port + 0')
+        if [[ -z $rows ]]; then
+            printf '(None)\n'
+            return 0
+        fi
+    fi
+
+    if command -v column >/dev/null 2>&1; then
+        {
+            printf 'PORT\tPROTOCOL\tPID\tPROCESS\n'
+            [[ -z $rows ]] || printf '%s\n' "$rows"
+        } | command column -t -s $'\t'
+    else
+        printf 'PORT\tPROTOCOL\tPID\tPROCESS\n'
+        [[ -z $rows ]] || printf '%s\n' "$rows"
+    fi
+    return 0
+}
+
+killport() {
+    if (( $# > 1 )); then
+        printf 'Usage: killport [port]\n' >&2
+        return 2
+    fi
+
+    local port=${1-} selected rows pid pids=()
+    if (( $# == 0 )); then
+        if ! command -v fzf >/dev/null 2>&1; then
+            printf 'Usage: killport <port> (install fzf to select interactively)\n' >&2
+            return 2
+        fi
+        rows=$(ports) || return 1
+        selected=$(printf '%s\n' "$rows" | command fzf --header-lines=1 --prompt='Port to terminate> ') || return 1
+        read -r port _ <<< "$selected"
+    fi
+
+    if ! __valid_port "$port"; then
+        printf 'Port must be an integer between 1 and 65535.\n' >&2
+        return 2
+    fi
+    rows=$(__port_processes) || return 1
+    while IFS= read -r pid; do
+        [[ -z $pid ]] || pids+=("$pid")
+    done < <(printf '%s\n' "$rows" | command awk -v port="$port" '$1 + 0 == port + 0 { print $3 }' | command sort -u)
+    if (( ${#pids[@]} == 0 )); then
+        printf 'No visible process is using local port %s.\n' "$port" >&2
+        return 1
+    fi
+
+    # Graceful termination only; never escalate privileges or force-kill.
+    command kill -TERM "${pids[@]}"
+}
+
+{{ if eq .hosttype "wsl" -}}
+if shopt -q login_shell && [[ -x /usr/bin/wsl2-ssh-agent ]]; then
+    eval "$(/usr/bin/wsl2-ssh-agent)"
+fi
+{{ end -}}
+
+if command -v starship >/dev/null 2>&1; then
+    eval "$(starship init bash)"
+fi
+if command -v zoxide >/dev/null 2>&1; then
+    eval "$(zoxide init bash)"
+fi
+
+# Capture successful output first, so older fzf versions cannot source errors.
+if command -v mise >/dev/null 2>&1 && __fzf_init=$(mise exec -- fzf --bash 2>/dev/null); then
+    eval "$__fzf_init"
+elif command -v fzf >/dev/null 2>&1 && __fzf_init=$(fzf --bash 2>/dev/null); then
+    eval "$__fzf_init"
+fi
+unset __fzf_init
