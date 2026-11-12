@@ -10,6 +10,9 @@
 
 {{ if or (ne .osid "linux-arch") (ne .hosttype "desktop") -}}
 .config/btop/
+.config/foot/
+.config/kitty/
+.config/umbriel/
 .config/xdg-terminals.list
 .local/share/applications/fastfetch-kitty.desktop
 {{ end -}}
