@@ -30,7 +30,7 @@ export PNPM_HOME="$HOME/.local/share/pnpm"
 __path_prepend "$PNPM_HOME/bin"
 unset -f __path_prepend
 
-{{ if and (eq .osid "linux-arch") (eq .hosttype "desktop") -}}
+{{ if and (eq .osid "linux-arch") .desktop -}}
 if [[ ! ${SSL_CERT_DIR+x} ]]; then
     export SSL_CERT_DIR=/etc/ssl/certs
 fi
@@ -189,7 +189,7 @@ killport() {
     command kill -TERM "${pids[@]}"
 }
 
-{{ if eq .hosttype "wsl" -}}
+{{ if .wsl -}}
 if shopt -q login_shell && [[ -x /usr/bin/wsl2-ssh-agent ]]; then
     eval "$(/usr/bin/wsl2-ssh-agent)"
 fi

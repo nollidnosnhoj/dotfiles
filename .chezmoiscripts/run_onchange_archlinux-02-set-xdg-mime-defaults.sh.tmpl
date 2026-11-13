@@ -1,4 +1,4 @@
-{{- if and (eq .osid "linux-arch") (eq .hosttype "desktop") -}}
+{{- if and (eq .osid "linux-arch") .desktop -}}
 #!/bin/bash
 set -euo pipefail
 

@@ -14,7 +14,7 @@ fi
 
 packages=(
     {{ .packages.arch.core | join " " }}
-{{ if and (eq .osid "linux-arch") (eq .hosttype "desktop") -}}
+{{ if and (eq .osid "linux-arch") .desktop -}}
     {{ .packages.arch.desktop | join " " }}
 {{ end -}}
 )

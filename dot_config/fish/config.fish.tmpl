@@ -1,4 +1,4 @@
-﻿{{ if and (eq .osid "linux-arch") (eq .hosttype "desktop") -}}
+﻿{{ if and (eq .osid "linux-arch") .desktop -}}
 functions --erase update
 function update
     "$HOME/.local/bin/update" $argv

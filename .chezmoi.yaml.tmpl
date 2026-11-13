@@ -1,5 +1,4 @@
-{{- $choices := list "desktop" "laptop" -}}
-{{- $hosttype := "" -}}
+{{- $desktop := false -}}
 {{- $osid := .chezmoi.os -}}
 {{- $email := "me@nollidnosnhoj.com" -}}
 {{- $name := "Dillon Johnson" -}}
@@ -11,23 +10,16 @@
 
 {{- if eq .chezmoi.os "linux" -}}
 {{-     $wsl = (.chezmoi.kernel.osrelease | lower | contains "microsoft") -}}
-{{-     if $wsl -}}
-{{-         $hosttype = "wsl" -}}
+{{-     if hasKey . "desktop" -}}
+{{-         $desktop = .desktop -}}
+{{-     else -}}
+{{-         $desktop = promptBool "Does this machine have a desktop environment" -}}
 {{-     end -}}
 {{- end -}}
 
 {{- if eq $osid "darwin" -}}
-{{-     $hosttype = "work" -}}
 {{-     $email = "rjohnson@gericall.nl" -}}
 {{-     $name = "Randall Dillon Johnson" -}}
-{{- end -}}
-
-{{- if eq $hosttype "" -}}
-{{-     if and (hasKey . "hosttype") (has .hosttype $choices) -}}
-{{-         $hosttype = .hosttype -}}
-{{-     else -}}
-{{-         $hosttype = promptChoice "What type of host are you on" $choices -}}
-{{-     end -}}
 {{- end -}}
 
 encryption: age
@@ -43,7 +35,8 @@ data:
     name: {{ $name | quote }}
     osid: {{ $osid | quote }}
     email: {{ $email | quote }}
-    hosttype: {{ $hosttype | quote }}
+    desktop: {{ $desktop }}
+    wsl: {{ $wsl }}
     packages:
         arch:
             core:

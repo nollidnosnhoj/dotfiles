@@ -8,16 +8,17 @@
 .config/fish/conf.d/orbstack.fish
 {{ end -}}
 
-{{ if or (ne .osid "linux-arch") (ne .hosttype "desktop") -}}
+{{ if or (ne .osid "linux-arch") (not .desktop) -}}
 .config/btop/
 .config/foot/
 .config/kitty/
+.config/noctalia/
 .config/umbriel/
 .config/xdg-terminals.list
 .local/share/applications/fastfetch-kitty.desktop
 {{ end -}}
 
-{{ if ne .hosttype "wsl" -}}
+{{ if not .wsl -}}
 .config/fish/conf.d/wsl2-ssh-agent.fish
 {{ end -}}
 
