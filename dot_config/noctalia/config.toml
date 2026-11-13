@@ -1,0 +1,31 @@
+[bar.default]
+center = [ "clock", "active_window" ]
+end = [ "media", "tray", "clipboard", "network", "bluetooth", "volume", "brightness", "notifications", "session" ]
+font_weight = 900
+start = [ "control-center", "launcher", "wallpaper", "workspaces" ]
+widget_spacing = 12
+
+[hooks]
+colors_changed = "dotfiles-sync"
+
+[plugins]
+enabled = []
+
+[shell]
+polkit_agent = true
+
+[shell.greeter_sync]
+auto_sync = true
+
+[theme]
+builtin = "Tokyo-Night"
+
+[theme.templates]
+builtin_ids = [ "foot", "gtk3", "gtk4", "ghostty", "kitty", "qt", "umbriel" ]
+community_ids = [ "thunar" ]
+
+[widget.network]
+show_label = false
+
+[widget.workspaces]
+show_labels = false
