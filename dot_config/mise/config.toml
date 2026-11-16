@@ -3,8 +3,10 @@ experimental = true
 
 [tools]
 aspire = "latest"
+azure = "latest"
 bun = "latest"
 claude = "latest"
+dotnet = "10"
 eza = "latest"
 fd = "latest"
 fzf = "latest"
@@ -14,6 +16,7 @@ helm = "latest"
 herdr = "latest"
 java = "latest"
 jq = "latest"
+kubectl = "latest"
 kustomize = "latest"
 lazygit = "latest"
 node = ["latest", "24"]
@@ -22,3 +25,4 @@ pi = "latest"
 pnpm = "latest"
 ripgrep = "latest"
 tree-sitter = "latest"
+uv = "latest"
