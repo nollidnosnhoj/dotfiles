@@ -13,10 +13,7 @@ if ! command -v paru >/dev/null 2>&1; then
 fi
 
 packages=(
-    {{ .packages.arch.core | join " " }}
-{{ if and (eq .osid "linux-arch") .desktop -}}
-    {{ .packages.arch.desktop | join " " }}
-{{ end -}}
+    {{ .packages.arch | join " " }}
 )
 
 # Match update's policy: check upstream Git commits, not just AUR versions.
