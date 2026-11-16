@@ -9,6 +9,7 @@
 {{ end -}}
 
 {{ if or (ne .osid "linux-arch") (not .desktop) -}}
+.chezmoiscripts/archlinux-02-set-xdg-mime-defaults.sh
 .config/btop/
 .config/foot/
 .config/kitty/
@@ -16,6 +17,14 @@
 .config/umbriel/
 .config/xdg-terminals.list
 .local/share/applications/fastfetch-kitty.desktop
+{{ end -}}
+
+{{ if ne .osid "linux-arch" -}}
+.chezmoiscripts/archlinux-00-install-packages.sh
+{{ end -}}
+
+{{ if ne .osid "darwin" -}}
+.chezmoiscripts/darwin-00-install-packages.sh
 {{ end -}}
 
 {{ if not .wsl -}}
