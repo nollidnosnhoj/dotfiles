@@ -22,7 +22,6 @@ builtin = "Tokyo-Night"
 
 [theme.templates]
 builtin_ids = [ "foot", "gtk3", "gtk4", "ghostty", "kitty", "qt", "umbriel" ]
-community_ids = [ "thunar" ]
 
 [widget.network]
 show_label = false
