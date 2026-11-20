@@ -1,4 +1,4 @@
-{{ if and (eq .osid "linux-arch") .desktop -}}
+{{ if and (eq (includeTemplate "arch-based" .) "true") .desktop -}}
 if not set -q SSL_CERT_DIR
     set -gx SSL_CERT_DIR /etc/ssl/certs
 end

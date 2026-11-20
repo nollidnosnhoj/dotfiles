@@ -1,0 +1,2 @@
+{{- /* Fall back to the distro ID for configs generated before archBased was added. */ -}}
+{{- dig "archBased" (eq .osid "linux-arch" "linux-cachyos") . -}}

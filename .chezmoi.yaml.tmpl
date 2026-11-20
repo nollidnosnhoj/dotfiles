@@ -34,6 +34,7 @@ hooks:
 data:
     name: {{ $name | quote }}
     osid: {{ $osid | quote }}
+    archBased: {{ includeTemplate "arch-based" (dict "osid" $osid) }}
     email: {{ $email | quote }}
     desktop: {{ $desktop }}
     wsl: {{ $wsl }}

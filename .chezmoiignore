@@ -8,7 +8,8 @@
 .config/fish/conf.d/orbstack.fish
 {{ end -}}
 
-{{ if or (ne .osid "linux-arch") (not .desktop) -}}
+{{ $archBased := eq (includeTemplate "arch-based" .) "true" -}}
+{{ if not (and $archBased .desktop) -}}
 .chezmoiscripts/archlinux-02-set-xdg-mime-defaults.sh
 .config/btop/
 .config/foot/
@@ -19,7 +20,7 @@
 .local/share/applications/fastfetch-kitty.desktop
 {{ end -}}
 
-{{ if ne .osid "linux-arch" -}}
+{{ if not $archBased -}}
 .chezmoiscripts/archlinux-00-install-packages.sh
 {{ end -}}
 

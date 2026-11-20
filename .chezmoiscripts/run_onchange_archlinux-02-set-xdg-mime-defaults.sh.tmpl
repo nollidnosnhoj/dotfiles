@@ -1,4 +1,4 @@
-{{- if and (eq .osid "linux-arch") .desktop -}}
+{{- if and (eq (includeTemplate "arch-based" .) "true") .desktop -}}
 #!/bin/bash
 set -euo pipefail
 

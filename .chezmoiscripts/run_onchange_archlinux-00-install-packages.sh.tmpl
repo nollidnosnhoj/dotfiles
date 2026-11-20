@@ -1,4 +1,4 @@
-{{ if eq .osid "linux-arch" -}}
+{{ if eq (includeTemplate "arch-based" .) "true" -}}
 #!/bin/bash
 set -euo pipefail
 
@@ -17,6 +17,6 @@ packages=(
 )
 
 # Match update's policy: check upstream Git commits, not just AUR versions.
-echo "Updating Arch Linux and AUR packages and installing configured packages..."
+echo "Updating {{ if eq .osid "linux-cachyos" }}CachyOS{{ else }}Arch Linux{{ end }} and AUR packages and installing configured packages..."
 paru -Syu --devel --needed "${packages[@]}"
 {{ end -}}

@@ -2,6 +2,24 @@
 
 My dotfiles, managed by [chezmoi]
 
+## Set up a CachyOS desktop
+
+Once `chezmoi` and `git` are installed, initialize from this repository and answer
+**yes** when asked if the machine has a desktop environment:
+
+```sh
+chezmoi init nollidnosnhoj/dotfiles
+chezmoi --no-pager diff
+```
+
+CachyOS keeps its own `linux-cachyos` ID and uses the same package list and
+desktop configuration as Arch Linux. If the age key is not already installed,
+chezmoi will prompt for the encrypted bootstrap key's passphrase when reading
+the source state.
+
+When you're ready, run `chezmoi apply`. The first apply can install and upgrade
+system and AUR packages and change desktop defaults.
+
 ## Capture live configuration changes
 
 Run `dotfiles-sync` to copy changes from already-managed files in your home
