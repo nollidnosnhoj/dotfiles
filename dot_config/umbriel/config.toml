@@ -186,14 +186,14 @@ numlock_toggle = true
 
 # Applications and session
 "Mod+Return" = { action = "spawn foot", repeat = false }
-"Mod+Space" = "spawn noctalia msg panel-toggle launcher"
+"Mod+Space" = { action = "spawn noctalia msg panel-toggle launcher", repeat = false }
 "Mod+Q" = { action = "window-close", repeat = false }
-"Mod+Escape" = "session-quit"
+"Mod+Escape" = { action = "session-quit", repeat = false }
 "Mod+Shift+Escape" = { action = "shortcuts-inhibit-toggle", allow_when_inhibited = true, repeat = false }
 "Mod+B" = { action = "spawn floorp", repeat = false }
 "Mod+N" = { action = "spawn luciole", repeat = false }
-"Ctrl+Alt+Delete" = { action = "spawn noctalia msg panel-toggle session"}
-"Print" = "spawn noctalia msg screenshot-region"
+"Ctrl+Alt+Delete" = { action = "spawn noctalia msg panel-toggle session", repeat = false }
+"Print" = { action = "spawn noctalia msg screenshot-region", repeat = false }
 
 "XF86AudioRaiseVolume" = { action = "spawn noctalia msg volume-up", allow_when_locked = true }
 "XF86AudioLowerVolume" = { action = "spawn noctalia msg volume-down", allow_when_locked = true }
@@ -286,8 +286,8 @@ numlock_toggle = true
 # their most recently focused row when focus leaves and later returns.
 # https://docs.noctalia.dev/umbriel/layout/
 [layout]
-mode = "master" # "scrolling", "dwindle", "master", or "stacking".
-extent_presets = [0.333, 0.5, 0.667]
+mode = "master"
+extent_presets = [0.35, 0.5]
 
 # What a tiled window's own maximize button does: "column" fills the column,
 # "edges" fills the usable area without struts, gaps, or borders. The
@@ -298,7 +298,7 @@ extent_presets = [0.333, 0.5, 0.667]
 # drop_zones = false # Disable edge and corner drop zones when dragging in the stacking layout.
 
 [layout.scrolling]
-default_extent_fraction = 0.5
+default_extent_fraction = 0.35
 # Center the window picked in the overview, as column-center would.
 # center_on_overview_select = true
 
